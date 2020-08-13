@@ -13,7 +13,7 @@ namespace TirelireShop.Controllers
         public ActionResult Index()
         {
             DBTirelireShopContext ctx = new DBTirelireShopContext();
-            return View(ctx.Couleurs);
+            return View(ctx.Couleur);
         }
 
         // GET: CouleurController/Details/5

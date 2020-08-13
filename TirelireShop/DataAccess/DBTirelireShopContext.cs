@@ -16,14 +16,14 @@ namespace TirelireShop
         }
 
         public virtual DbSet<Avis> Avis { get; set; }
-        public virtual DbSet<Client> Clients { get; set; }
-        public virtual DbSet<Commande> Commandes { get; set; }
-        public virtual DbSet<Couleur> Couleurs { get; set; }
-        public virtual DbSet<DetailsCommande> DetailsCommandes { get; set; }
-        public virtual DbSet<Fabricant> Fabricants { get; set; }
-        public virtual DbSet<Image> Images { get; set; }
-        public virtual DbSet<Produit> Produits { get; set; }
-        public virtual DbSet<StatutCommande> StatutCommandes { get; set; }
+        public virtual DbSet<Client> Client { get; set; }
+        public virtual DbSet<Commande> Commande { get; set; }
+        public virtual DbSet<Couleur> Couleur { get; set; }
+        public virtual DbSet<DetailsCommande> DetailsCommande { get; set; }
+        public virtual DbSet<Fabricant> Fabricant { get; set; }
+        public virtual DbSet<Image> Image { get; set; }
+        public virtual DbSet<Produit> Produit { get; set; }
+        public virtual DbSet<StatutCommande> StatutCommande { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
