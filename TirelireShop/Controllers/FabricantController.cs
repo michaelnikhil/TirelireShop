@@ -45,10 +45,11 @@ namespace TirelireShop.Controllers
         // POST: FabricantController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Fabricant fabricant)
         {
             try
             {
+                repoFabricant.InsertItem(fabricant);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -60,16 +61,17 @@ namespace TirelireShop.Controllers
         // GET: FabricantController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            return View(repoFabricant.GetItem(id));
         }
 
         // POST: FabricantController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(Fabricant fabricant)
         {
             try
             {
+                repoFabricant.UpdateItem(fabricant);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -81,16 +83,17 @@ namespace TirelireShop.Controllers
         // GET: FabricantController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            return View(repoFabricant.GetItem(id));
         }
 
         // POST: FabricantController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(Fabricant fabricant)
         {
             try
             {
+                repoFabricant.DeleteItem(fabricant);
                 return RedirectToAction(nameof(Index));
             }
             catch
