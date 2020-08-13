@@ -33,7 +33,7 @@ namespace TirelireShop.Controllers
         // GET: FabricantController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            return View(repoFabricant.GetItem(id));
         }
 
         // GET: FabricantController/Create

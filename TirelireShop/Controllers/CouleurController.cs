@@ -30,7 +30,7 @@ namespace TirelireShop.Controllers
         // GET: CouleurController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            return View(repoCouleur.GetItem(id));
         }
 
         // GET: CouleurController/Create  //on remplit le formulaire
