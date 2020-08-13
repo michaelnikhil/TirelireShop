@@ -32,7 +32,6 @@ namespace TirelireShop.Repository
         public T GetItem(int id)
         {
             return _contexte.Set<T>().Find(id);
-            throw new NotImplementedException();
         }
 
         public T InsertItem(T item)
@@ -49,8 +48,6 @@ namespace TirelireShop.Repository
                 //reacion a gerer
                 throw;
             }
-
-            throw new NotImplementedException();
         }
 
         public T UpdateItem(T item)
@@ -59,8 +56,7 @@ namespace TirelireShop.Repository
             _contexte.Entry(item).State = EntityState.Modified;
             _contexte.SaveChanges();
             return item;
-//            _contexte.Set<T>().Update
-            //throw new NotImplementedException();
+
         }
     }
 }

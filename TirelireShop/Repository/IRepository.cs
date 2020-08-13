@@ -14,6 +14,7 @@ namespace TirelireShop.DataAccess
         T GetItem(int id);
 
 
+
     }
 
 }

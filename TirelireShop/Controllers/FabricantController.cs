@@ -4,50 +4,36 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Server.Kestrel.Core;
-using TirelireShop.DataAccess;
-using TirelireShop.Repository;
 
 namespace TirelireShop.Controllers
 {
-    public class CouleurController : Controller
+    public class FabricantController : Controller
     {
-        IRepository<Couleur> repoCouleur;
-        DBTirelireShopContext ctx;
-        // GET: CouleurController
-
-        public CouleurController()
-        {
-            ctx = new DBTirelireShopContext();
-            repoCouleur = new RepositoryTirelire<Couleur>(ctx);
-        }
-
+        // GET: FabricantController
         public ActionResult Index()
         {
-            return View(repoCouleur.GetAll());
+            return View();
         }
 
-        // GET: CouleurController/Details/5
+        // GET: FabricantController/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: CouleurController/Create  //on remplit le formulaire
+        // GET: FabricantController/Create
         public ActionResult Create()
         {
-
             return View();
         }
 
-        // POST: CouleurController/Create
+        // POST: FabricantController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Couleur couleur)
+        public ActionResult Create(IFormCollection collection)
         {
             try
             {
-                repoCouleur.InsertItem(couleur);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -56,21 +42,19 @@ namespace TirelireShop.Controllers
             }
         }
 
-        // GET: CouleurController/Edit/5
+        // GET: FabricantController/Edit/5
         public ActionResult Edit(int id)
         {
-
-            return View(repoCouleur.GetItem(id));
+            return View();
         }
 
-        // POST: CouleurController/Edit/5
+        // POST: FabricantController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Couleur couleur)
+        public ActionResult Edit(int id, IFormCollection collection)
         {
             try
             {
-                repoCouleur.UpdateItem(couleur);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -79,20 +63,19 @@ namespace TirelireShop.Controllers
             }
         }
 
-        // GET: CouleurController/Delete/5
+        // GET: FabricantController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View(repoCouleur.GetItem(id));
+            return View();
         }
 
-        // POST: CouleurController/Delete/5
+        // POST: FabricantController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(Couleur couleur)
+        public ActionResult Delete(int id, IFormCollection collection)
         {
             try
             {
-                repoCouleur.DeleteItem(couleur);
                 return RedirectToAction(nameof(Index));
             }
             catch

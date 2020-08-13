@@ -1,0 +1,101 @@
+﻿@model IEnumerable<TirelireShop.Produit>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hauteur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Longueur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Largeur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Poids)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Capacite)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prix)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DescriptionFabricant)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Idimage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StatutActivation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdcouleurNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdfabricantNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hauteur)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Longueur)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Largeur)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Poids)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Capacite)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prix)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescriptionFabricant)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Idimage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StatutActivation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdcouleurNavigation.Couleur1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdfabricantNavigation.Adresse)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Idproduit">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Idproduit">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Idproduit">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
