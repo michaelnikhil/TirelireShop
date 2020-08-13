@@ -4,16 +4,26 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using TirelireShop.DataAccess;
+using TirelireShop.Repository;
 
 namespace TirelireShop.Controllers
 {
     public class CouleurController : Controller
     {
+        IRepository<Couleur> repoCouleur;
+        DBTirelireShopContext ctx;
         // GET: CouleurController
+
+        public CouleurController()
+        {
+            ctx = new DBTirelireShopContext();
+            repoCouleur = new RepositoryTirelire<Couleur>(ctx);
+        }
+
         public ActionResult Index()
         {
-            DBTirelireShopContext ctx = new DBTirelireShopContext();
-            return View(ctx.Couleur);
+            return View(repoCouleur.GetAll());
         }
 
         // GET: CouleurController/Details/5
@@ -22,7 +32,7 @@ namespace TirelireShop.Controllers
             return View();
         }
 
-        // GET: CouleurController/Create
+        // GET: CouleurController/Create  //on remplit le formulaire
         public ActionResult Create()
         {
             return View();
@@ -31,10 +41,11 @@ namespace TirelireShop.Controllers
         // POST: CouleurController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Couleur couleur)
         {
             try
             {
+                repoCouleur.InsertItem(couleur);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -46,16 +57,18 @@ namespace TirelireShop.Controllers
         // GET: CouleurController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+
+            return View(repoCouleur.GetItem(id));
         }
 
         // POST: CouleurController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(Couleur couleur)
         {
             try
             {
+                repoCouleur.UpdateItem(couleur);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -67,16 +80,17 @@ namespace TirelireShop.Controllers
         // GET: CouleurController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            return View(repoCouleur.GetItem(id));
         }
 
         // POST: CouleurController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(Couleur couleur)
         {
             try
             {
+                repoCouleur.DeleteItem(couleur);
                 return RedirectToAction(nameof(Index));
             }
             catch

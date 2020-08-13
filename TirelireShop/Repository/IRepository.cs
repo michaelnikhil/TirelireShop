@@ -8,9 +8,10 @@ namespace TirelireShop.DataAccess
     interface IRepository<T> where T : class
     {
         IEnumerable<T> GetAll();
-        void InsertItem(T item);
-        void DeleteItem(T item);
-        void UpdateItem(T item);
+        T InsertItem(T item);
+        T DeleteItem(T item);
+        T UpdateItem(T item);
+        T GetItem(int id);
 
 
     }
