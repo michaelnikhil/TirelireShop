@@ -13,6 +13,14 @@
     text-align: center;
 }
 
+tr{
+    text-align:left
+}
+
+.row{
+    text-align:left
+}
+
 .into {
     color: #800000;
     font-size: 25px;
