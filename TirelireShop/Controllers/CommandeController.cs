@@ -32,10 +32,7 @@ namespace TirelireShop.Controllers
         // GET: CouleurController/Details/5
         public ActionResult Details(int id)
         {
-            IRepository<DetailsCommande>  repoDetails = new RepositoryTirelire<DetailsCommande>(ctx);
-                
-              
-
+            IRepository<DetailsCommande>  repoDetails = new RepositoryTirelire<DetailsCommande>(ctx);         
             return View(repoDetails.GetItem(id));
         }
 
