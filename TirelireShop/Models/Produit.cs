@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace TirelireShop
 {
@@ -22,11 +23,13 @@ namespace TirelireShop
         public int Idfabricant { get; set; }
         public int Idcouleur { get; set; }
         public decimal Prix { get; set; }
+        [DisplayName("Description par le fabricant")]
         public string DescriptionFabricant { get; set; }
         public int Idimage { get; set; }
+        [DisplayName("A la vente")]
         public bool StatutActivation { get; set; }
 
-        public virtual Couleur IdcouleurNavigation { get; set; }
+                public virtual Couleur IdcouleurNavigation { get; set; }
         public virtual Fabricant IdfabricantNavigation { get; set; }
         public virtual ICollection<Avis> Avis { get; set; }
         public virtual ICollection<DetailsCommande> DetailsCommande { get; set; }
