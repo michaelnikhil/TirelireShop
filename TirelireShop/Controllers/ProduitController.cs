@@ -26,7 +26,6 @@ namespace TirelireShop.Controllers
         // GET: ProduitController
         public ActionResult Index()
         {
-
             return View(repoProduit.GetAll());
      /*       RepositoryTirelire<Couleur> repoCouleur = new RepositoryTirelire<Couleur>(ctx);
             var list = from p in repoProduit.GetAll()
@@ -37,8 +36,6 @@ namespace TirelireShop.Controllers
                            p.Idimage, p.StatutActivation, c.Couleur1, p.Idfabricant } ;
 
             return View(list);*/
-
-
 
         }
 
