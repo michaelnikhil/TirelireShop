@@ -28,27 +28,34 @@
                 <th>
                     @Html.DisplayNameFor(model => model.DescriptionFabricant)
                 </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdcouleurNavigation.Couleur1)
+                </th>
+
                 <th></th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Nom)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Prix)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DescriptionFabricant)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.Idproduit">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.Idproduit">Details</a>
-                    </td>
-                </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prix)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DescriptionFabricant)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdcouleurNavigation.Couleur1)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Idproduit">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Idproduit">Details</a>
+                </td>
+            </tr>
             }
         </tbody>
     </table>

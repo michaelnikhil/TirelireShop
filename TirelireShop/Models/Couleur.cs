@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace TirelireShop
 {
@@ -11,8 +13,10 @@ namespace TirelireShop
         }
 
         public int Idcouleur { get; set; }
-        public string Couleur1 { get; set; }
 
+        [DisplayName("Couleur")]
+        public string Couleur1 { get; set; }
+        
         public virtual ICollection<Produit> Produit { get; set; }
     }
 }

@@ -55,8 +55,15 @@ namespace TirelireShop.Controllers
                 string webRootpath = _environment.WebRootPath;
                 string folderPath = "\\images\\";
 
-           string fullPath = webRootpath + folderPath + requestedProduit.Image;
-           if (System.IO.File.Exists(fullPath))
+                string fullPath = webRootpath + folderPath + requestedProduit.Image;
+                Debug.WriteLine("*************");
+                Debug.WriteLine("");
+                Debug.WriteLine(fullPath);
+                Debug.WriteLine("");
+                Debug.WriteLine("*************");
+
+                if (System.IO.File.Exists(fullPath))
+
            {
                FileStream fileOnDisk = new FileStream(fullPath, FileMode.Open);
                byte[] fileBytes;
