@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 
@@ -20,7 +21,9 @@ namespace TirelireShop
         public decimal Largeur { get; set; }
         public decimal Poids { get; set; }
         public int Capacite { get; set; }
+        [DisplayName("Fabricant")]
         public int Idfabricant { get; set; }
+        [DisplayName("Couleur")]
         public int Idcouleur { get; set; }
         public decimal Prix { get; set; }
         [DisplayName("Description par le fabricant")]
@@ -29,8 +32,14 @@ namespace TirelireShop
         [DisplayName("A la vente")]
         public bool StatutActivation { get; set; }
 
-                public virtual Couleur IdcouleurNavigation { get; set; }
+        [DisplayName("Couleur")]
+        public virtual Couleur IdcouleurNavigation { get; set; }
+        [DisplayName("Fabricant")]
         public virtual Fabricant IdfabricantNavigation { get; set; }
+
+
+
+
         public virtual ICollection<Avis> Avis { get; set; }
         public virtual ICollection<DetailsCommande> DetailsCommande { get; set; }
         public virtual ICollection<Image> Image { get; set; }

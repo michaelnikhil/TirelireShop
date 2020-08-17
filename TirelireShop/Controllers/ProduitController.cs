@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -15,12 +17,13 @@ namespace TirelireShop.Controllers
 
         private IRepository<Produit> repoProduit;
         private DBTirelireShopContext ctx;
+        private IWebHostEnvironment _environment;
 
-
-        public ProduitController()
+        public ProduitController(IWebHostEnvironment environment)
         {
             ctx = new DBTirelireShopContext();
             repoProduit = new RepositoryTirelire<Produit>(ctx);
+            _environment = environment;
         }
 
         // GET: ProduitController
@@ -63,11 +66,28 @@ namespace TirelireShop.Controllers
         // POST: ProduitController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Produit produit)
+
+        public ActionResult Create(Produit produit, IFormFile fichier)
         {
             try
             {
                 repoProduit.InsertItem(produit);
+
+                // do other validations on your model as needed
+         
+                if (fichier != null)
+                {
+                    var uniqueFileName = fichier.FileName;
+
+                    var uploads = Path.Combine(_environment.WebRootPath, "images");
+                    var filePath = Path.Combine(uploads, uniqueFileName);
+                    fichier.CopyTo(new FileStream(filePath, FileMode.Create));
+                    
+
+                    //to do : Save uniqueFileName  to your db table   
+                }
+
+
                 return RedirectToAction(nameof(Index));
             }
             catch

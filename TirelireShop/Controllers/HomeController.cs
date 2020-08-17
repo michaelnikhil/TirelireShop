@@ -33,7 +33,6 @@ namespace TirelireShop.Controllers
 
         public IActionResult Index()
         {
-   
             string imagePath = _environment.WebRootPath + "\\images\\";
             ViewBag.imagePath = imagePath;
 
@@ -60,12 +59,11 @@ namespace TirelireShop.Controllers
                 string webRootpath = _environment.WebRootPath;
                 string folderPath = "\\images\\";
 
-
                 string im = requestedProduit.Image.OrderByDescending(i => i.CheminAcces).Select(i => i.CheminAcces).SingleOrDefault();
+
                 string fullPath = webRootpath + folderPath + im;
 
                 if (System.IO.File.Exists(fullPath))
-
                 {
                     FileStream fileOnDisk = new FileStream(fullPath, FileMode.Open);
                     byte[] fileBytes;
