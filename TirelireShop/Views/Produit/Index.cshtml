@@ -26,6 +26,12 @@
                     @Html.DisplayNameFor(model => model.Prix)
                 </th>
                 <th>
+                    @Html.DisplayNameFor(model => model.Idproduit)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Idimage)
+                </th>
+                <th>
                     @Html.DisplayNameFor(model => model.DescriptionFabricant)
                 </th>
                 <th>
@@ -46,6 +52,12 @@
                     @Html.DisplayFor(modelItem => item.Prix)
                 </td>
                 <td>
+                    @Html.DisplayFor(modelItem => item.Idproduit)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Idimage)
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.DescriptionFabricant)
                 </td>
                 <td>
@@ -53,7 +65,8 @@
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Idproduit">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Idproduit">Details</a>
+                    <a asp-action="Details" asp-route-id="@item.Idproduit">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Idproduit">Delete</a>
                 </td>
             </tr>
             }

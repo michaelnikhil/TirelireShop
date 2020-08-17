@@ -16,6 +16,7 @@ namespace TirelireShop.Controllers
     {
 
         private IRepository<Produit> repoProduit;
+        private IRepository<Image> repoImage;
         private DBTirelireShopContext ctx;
         private IWebHostEnvironment _environment;
 
@@ -23,6 +24,7 @@ namespace TirelireShop.Controllers
         {
             ctx = new DBTirelireShopContext();
             repoProduit = new RepositoryTirelire<Produit>(ctx);
+            repoImage = new RepositoryTirelire<Image>(ctx);
             _environment = environment;
         }
 
@@ -30,16 +32,6 @@ namespace TirelireShop.Controllers
         public ActionResult Index()
         {
             return View(repoProduit.GetAll());
-     /*       RepositoryTirelire<Couleur> repoCouleur = new RepositoryTirelire<Couleur>(ctx);
-            var list = from p in repoProduit.GetAll()
-                       join c in repoCouleur.GetAll()
-                       on p.Idcouleur equals c.Idcouleur
-                      
-                       select new {p.Nom, p.Hauteur, p.Longueur, p.Largeur, p.Poids, p.Capacite, p.Prix, p.DescriptionFabricant, 
-                           p.Idimage, p.StatutActivation, c.Couleur1, p.Idfabricant } ;
-
-            return View(list);*/
-
         }
 
         // GET: ProduitController/Details/5
@@ -66,28 +58,25 @@ namespace TirelireShop.Controllers
         // POST: ProduitController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-
         public ActionResult Create(Produit produit, IFormFile fichier)
         {
             try
             {
                 repoProduit.InsertItem(produit);
-
-                // do other validations on your model as needed
-         
                 if (fichier != null)
                 {
                     var uniqueFileName = fichier.FileName;
-
                     var uploads = Path.Combine(_environment.WebRootPath, "images");
                     var filePath = Path.Combine(uploads, uniqueFileName);
                     fichier.CopyTo(new FileStream(filePath, FileMode.Create));
-                    
 
-                    //to do : Save uniqueFileName  to your db table   
+                    //update DB
+                    Image image = new Image();
+                    image.CheminAcces = uniqueFileName;
+                    image.IdproduitNavigation = produit;
+                    repoImage.InsertItem(image);
                 }
-
-
+                
                 return RedirectToAction(nameof(Index));
             }
             catch

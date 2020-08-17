@@ -61,24 +61,15 @@
                 <input asp-for="DescriptionFabricant" class="form-control" />
                 <span asp-validation-for="DescriptionFabricant" class="text-danger"></span>
             </div>
+            <!--
             <div class="form-group">
                 <label asp-for="Idimage" class="control-label"></label>
                 <input asp-for="Idimage" class="form-control" />
                 <span asp-validation-for="Idimage" class="text-danger"></span>
-            </div>
+            </div>-->
             <div class="form-group">
                 <input type="file" name="fichier" />
-               <!-- <input type="submit" /> -->
             </div>
-
-
-
-            <!--    <form method="post" enctype="multipart/form-data">
-            <input type="file" asp-for="Upload" />
-            <input type="file" asp-for="Idimage" />
-            <input type="submit" />
-        </form>  -->
-
             <div class="form-group form-check">
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="StatutActivation" /> @Html.DisplayNameFor(model => model.StatutActivation)

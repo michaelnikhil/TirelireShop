@@ -1,0 +1,47 @@
+﻿@model IEnumerable<TirelireShop.Image>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CheminAcces)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Idimage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdproduitNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CheminAcces)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Idimage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdproduitNavigation.Idproduit)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Idimage">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Idimage">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Idimage">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

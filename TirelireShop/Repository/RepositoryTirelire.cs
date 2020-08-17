@@ -38,14 +38,14 @@ namespace TirelireShop.Repository
         {
             try
             {
-                _contexte.Set<T>().Add(item);  //ajout a lieu dans le cache de l'appli ASP.NET
+                T retour = ( _contexte.Set<T>().Add(item)).Entity;  //ajout a lieu dans le cache de l'appli ASP.NET
                 _contexte.SaveChanges();
                 
-                return item;
+                return retour;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //reacion a gerer
+                //reaction a gerer
                 throw;
             }
         }
