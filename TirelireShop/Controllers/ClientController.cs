@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using TirelireShop.DataAccess;
 using TirelireShop.Repository;
 
@@ -13,11 +16,13 @@ namespace TirelireShop.Controllers
     {
         private IRepository<Client> repoClient;
         private DBTirelireShopContext ctx;
+        private UserManager<Client> _userManager;
 
-        public ClientController()
+        public ClientController(UserManager<Client> userManager)
         {
             ctx = new DBTirelireShopContext();
             repoClient = new RepositoryTirelire<Client>(ctx);
+            _userManager = userManager;
         }
 
         // GET: ClientController

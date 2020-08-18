@@ -1,16 +1,17 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using TirelireShop.Data;
 
 namespace TirelireShop
 {
-    public partial class DBTirelireShopContext : DbContext
+    public partial class DBTirelireShopContext : IdentityContext
     {
         public DBTirelireShopContext()
         {
         }
 
-        public DBTirelireShopContext(DbContextOptions<DBTirelireShopContext> options)
+        public DBTirelireShopContext(DbContextOptions<IdentityContext> options)
             : base(options)
         {
         }
@@ -37,6 +38,8 @@ namespace TirelireShop
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<Avis>(entity =>
             {
                 entity.HasKey(e => e.Idavis);

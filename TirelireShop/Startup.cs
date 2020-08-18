@@ -31,8 +31,13 @@ namespace TirelireShop
             services.AddDbContext<DBTirelireShopContext>(options => options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddDbContext<IdentityContext>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("IdentityContextConnection")).UseLazyLoadingProxies());
+
+            services.AddDefaultIdentity<Client>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<DBTirelireShopContext>();
+
             services.AddControllersWithViews();
             services.AddRazorPages();
         }

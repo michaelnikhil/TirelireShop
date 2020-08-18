@@ -51,6 +51,7 @@ namespace TirelireShop.Controllers
         }
 
         //TODO pour plusieurs images
+        //TODO mise en cache ou refresh image
         public IActionResult GetImage(int id)
         {
             Produit requestedProduit = repoProduit.GetItem(id);

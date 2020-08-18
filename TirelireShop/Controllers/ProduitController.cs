@@ -63,6 +63,7 @@ namespace TirelireShop.Controllers
             try
             {
                 repoProduit.InsertItem(produit);
+                //ajout de l'image
                 if (fichier != null)
                 {
                     var uniqueFileName = fichier.FileName;
