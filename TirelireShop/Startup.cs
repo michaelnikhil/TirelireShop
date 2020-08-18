@@ -39,10 +39,17 @@ namespace TirelireShop
                 .AddEntityFrameworkStores<IdentityContext>();*/
 
 
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<DBTirelireShopContext>();
+          /*  services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddEntityFrameworkStores<DBTirelireShopContext>();*/
 
+            services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            {
+                options.Password.RequireDigit = true;
+                options.Password.RequiredLength = 7;
+                options.Password.RequireUppercase = true;
 
+                options.User.RequireUniqueEmail = true;
+            }).AddEntityFrameworkStores<IdentityContext>();
 
 
             services.AddControllersWithViews();
