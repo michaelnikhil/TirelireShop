@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -16,17 +15,12 @@ namespace TirelireShop.Controllers
     {
         private IRepository<Client> repoClient;
         private DBTirelireShopContext ctx;
-        private SignInManager<Client> _signInManager;
-        private UserManager<Client> _userManager;
-        private RoleManager<IdentityRole> _roleManager;
 
-        public ClientController(SignInManager<Client> signInManager, UserManager<Client> userManager, RoleManager<IdentityRole> roleManager)
+        public ClientController()
         {
             ctx = new DBTirelireShopContext();
             repoClient = new RepositoryTirelire<Client>(ctx);
-            _signInManager = signInManager;
-            _userManager = userManager;
-            _roleManager = roleManager;
+
         }
 
         // GET: ClientController

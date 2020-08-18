@@ -35,8 +35,8 @@ namespace TirelireShop
                 options.UseSqlServer(
                     Configuration.GetConnectionString("IdentityContextConnection")).UseLazyLoadingProxies());
 
-            services.AddDefaultIdentity<Client>(options => options.SignIn.RequireConfirmedAccount = false)
-                .AddEntityFrameworkStores<DBTirelireShopContext>();
+           /* services.AddDefaultIdentity<Client>(options => options.SignIn.RequireConfirmedAccount = false)
+                .AddEntityFrameworkStores<DBTirelireShopContext>();*/
 
             services.AddIdentity<Client, IdentityRole>(options =>
             {

@@ -12,7 +12,7 @@ namespace TirelireShop
             Commande = new HashSet<Commande>();
         }
 
-        //public int Idclient { get; set; }
+        public string Idclient { get; set; }
         public string Nom { get; set; }
         public string Prenom { get; set; }
         //public string Email { get; set; }
