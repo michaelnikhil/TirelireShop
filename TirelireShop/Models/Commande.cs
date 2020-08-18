@@ -12,7 +12,8 @@ namespace TirelireShop
 
         public int Idcommande { get; set; }
         public DateTime Date { get; set; }
-        public int Idclient { get; set; }
+        //public int Idclient { get; set; }
+        public string Idclient { get; set; }
         public int IdstatutCommande { get; set; }
 
         public virtual Client IdclientNavigation { get; set; }

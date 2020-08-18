@@ -38,6 +38,15 @@ namespace TirelireShop
             services.AddDefaultIdentity<Client>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<DBTirelireShopContext>();
 
+            services.AddIdentity<Client, IdentityRole>(options =>
+            {
+                options.Password.RequireDigit = true;
+                options.Password.RequiredLength = 7;
+                options.Password.RequireUppercase = true;
+
+                options.User.RequireUniqueEmail = true;
+            }).AddEntityFrameworkStores<DBTirelireShopContext>();
+
             services.AddControllersWithViews();
             services.AddRazorPages();
         }

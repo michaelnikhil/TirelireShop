@@ -16,13 +16,17 @@ namespace TirelireShop.Controllers
     {
         private IRepository<Client> repoClient;
         private DBTirelireShopContext ctx;
+        private SignInManager<Client> _signInManager;
         private UserManager<Client> _userManager;
+        private RoleManager<IdentityRole> _roleManager;
 
-        public ClientController(UserManager<Client> userManager)
+        public ClientController(SignInManager<Client> signInManager, UserManager<Client> userManager, RoleManager<IdentityRole> roleManager)
         {
             ctx = new DBTirelireShopContext();
             repoClient = new RepositoryTirelire<Client>(ctx);
+            _signInManager = signInManager;
             _userManager = userManager;
+            _roleManager = roleManager;
         }
 
         // GET: ClientController
