@@ -138,5 +138,16 @@ namespace TirelireShop.Controllers
                 return View();
             }
         }
+
+        public ActionResult AddToCart(int id)
+        {
+            DetailsCommande ShoppingCart = new DetailsCommande();
+
+            return RedirectToAction("Index", "Home", new { area = "" });
+            
+
+        }
+
+
     }
 }

@@ -10,7 +10,7 @@
 
 
 <div>
-    
+
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -86,8 +86,15 @@
             @Html.DisplayFor(model => model.IdfabricantNavigation.Nom)
         </dd>
     </dl>
+        <div class="photo-display">
+            <img class="photo-display-img" src="@Url.Action("GetImage", "Home", new { Id = Model.Idproduit })" />
+        </div>
+
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Idproduit">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Back to List</a> |
+    <a asp-action="AddToCart" asp-route-id="@Model.Idproduit">Ajouter au panier</a>
 </div>
+
+
