@@ -36,8 +36,6 @@ namespace TirelireShop
             options.UseSqlServer(
         Configuration.GetConnectionString("DefaultConnection")));
 
-/*            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<IdentityContext>();*/
 
             services.AddIdentity<IdentityUser, IdentityRole>(options =>
             {
@@ -52,6 +50,8 @@ namespace TirelireShop
             {
                 options.AddPolicy("RequireEmail", policy => policy.RequireClaim(ClaimTypes.Email));
             });
+
+            services.AddSession(options => options.IdleTimeout = TimeSpan.FromSeconds(60));
 
             services.AddControllersWithViews();
             services.AddRazorPages();
@@ -73,6 +73,8 @@ namespace TirelireShop
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            app.UseSession();
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

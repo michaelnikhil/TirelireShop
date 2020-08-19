@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using TirelireShop.DataAccess;
 using TirelireShop.Repository;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace TirelireShop.Controllers
 {
@@ -141,12 +142,32 @@ namespace TirelireShop.Controllers
 
         public ActionResult AddToCart(int id)
         {
-            DetailsCommande ShoppingCart = new DetailsCommande();
+            if (ModelState.IsValid)
+            {
+                if (User.Identity.IsAuthenticated)
+                {
+                    DetailsCommande ShoppingCart = new DetailsCommande();
+                    //PopulateProductsList(customer.SelectedProductsList);
 
-            return RedirectToAction("Index", "Home", new { area = "" });
-            
+                }
+                else
+                {
+                    return RedirectToAction("Login", "Account", new { area = "" });
+                }
+            }
 
+            return RedirectToAction("Index", "Home", new { area = "" }); 
         }
+
+        private void PopulateProductsList(List<int> Id = null)
+        {
+            var products = from p in repoProduit.GetAll()
+                           orderby p.Nom
+                           select p.Nom;
+
+            ViewBag.ProductsList = new MultiSelectList(products);
+        }
+
 
 
     }
