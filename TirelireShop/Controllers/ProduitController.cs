@@ -65,7 +65,8 @@ namespace TirelireShop.Controllers
                 repoProduit.InsertItem(produit);
                 if (fichier != null)
                 {
-                    var uniqueFileName = fichier.FileName;
+                    //TODO : OK with Chrome, but filename returns teh full path in Microsoft Edge
+                    var uniqueFileName = fichier.FileName;                  
                     var uploads = Path.Combine(_environment.WebRootPath, "images");
                     var filePath = Path.Combine(uploads, uniqueFileName);
                     fichier.CopyTo(new FileStream(filePath, FileMode.Create));
