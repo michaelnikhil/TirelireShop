@@ -1,0 +1,51 @@
+﻿@model IEnumerable<TirelireShop.DetailsCommande>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantite)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prix)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdcommandeNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdproduitNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantite)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prix)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdcommandeNavigation.Idcommande)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdproduitNavigation.DescriptionFabricant)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IddetailsCommande">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IddetailsCommande">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IddetailsCommande">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

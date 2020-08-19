@@ -51,7 +51,7 @@ namespace TirelireShop
                 options.AddPolicy("RequireEmail", policy => policy.RequireClaim(ClaimTypes.Email));
             });
 
-            services.AddSession(options => options.IdleTimeout = TimeSpan.FromSeconds(60));
+            services.AddSession(options => options.IdleTimeout = TimeSpan.FromMinutes(20));
 
             services.AddControllersWithViews();
             services.AddRazorPages();

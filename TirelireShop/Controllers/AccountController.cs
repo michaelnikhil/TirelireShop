@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using TirelireShop.ViewModels;
 using System.Security.Claims;
+using TirelireShop.DataAccess;
+using TirelireShop.Repository;
 
 namespace TirelireShop.Controllers
 {
@@ -14,12 +16,16 @@ namespace TirelireShop.Controllers
         private SignInManager<IdentityUser> _signInManager;
         private UserManager<IdentityUser> _userManager;
         //private RoleManager<IdentityRole> _roleManager;
+        private IRepository<Client> repoClient;
+        private DBTirelireShopContext ctx;
 
         public AccountController(SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager)
         {
             _signInManager = signInManager;
             _userManager = userManager;
             //_roleManager = roleManager;
+            ctx = new DBTirelireShopContext();
+            repoClient = new RepositoryTirelire<Client>(ctx);
         }
 
         public IActionResult Login()
@@ -62,7 +68,7 @@ namespace TirelireShop.Controllers
         public async Task<IActionResult> RegisterPost(RegisterViewModel registerModel)
         {
             if (ModelState.IsValid)
-            {
+            {  //1. Update Identity context
                 IdentityUser user = new IdentityUser
                 {
                     
@@ -94,6 +100,16 @@ namespace TirelireShop.Controllers
                     var resultSignIn = await _signInManager.PasswordSignInAsync(registerModel.UserName, registerModel.Password, registerModel.RememberMe, false);
                     if (resultSignIn.Succeeded)
                     {
+                        //2. Update DBTirelireShop context
+                        Client client = new Client
+                        {
+                            Nom = registerModel.LastName,
+                            Prenom = registerModel.FirstName,
+                            Email = registerModel.Email,
+                            StatutCompte = true
+                        };
+                        repoClient.InsertItem(client);
+
                         return RedirectToAction("Index", "Home");
                     }
                 }

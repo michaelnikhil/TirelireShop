@@ -10,6 +10,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using TirelireShop.DataAccess;
 using TirelireShop.Repository;
 using Microsoft.Extensions.Caching.Memory;
+using Newtonsoft.Json;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Identity;
 
 namespace TirelireShop.Controllers
 {
@@ -18,14 +21,19 @@ namespace TirelireShop.Controllers
 
         private IRepository<Produit> repoProduit;
         private IRepository<Image> repoImage;
+        private IRepository<Client> repoClient;
         private DBTirelireShopContext ctx;
         private IWebHostEnvironment _environment;
+        private UserManager<IdentityUser> _userManager;
 
-        public ProduitController(IWebHostEnvironment environment)
+
+        public ProduitController(IWebHostEnvironment environment, UserManager<IdentityUser> userManager)
         {
             ctx = new DBTirelireShopContext();
             repoProduit = new RepositoryTirelire<Produit>(ctx);
             repoImage = new RepositoryTirelire<Image>(ctx);
+            repoClient = new RepositoryTirelire<Client>(ctx);
+            _userManager = userManager;
             _environment = environment;
         }
 
@@ -140,13 +148,39 @@ namespace TirelireShop.Controllers
             }
         }
 
-        public ActionResult AddToCart(int id)
+        public async Task<IActionResult> AddToCart(int id)
         {
             if (ModelState.IsValid)
             {
                 if (User.Identity.IsAuthenticated)
                 {
+
+                    //retrieve user email and compare to Client table
+                    Claim claim = User.Claims.ToList().FirstOrDefault();
+                    string id_user = claim.Value;
+                    IdentityUser user = await _userManager.FindByIdAsync(id_user);
+                    string user_email = user.Email;
+
+                    int? client_email = repoClient.GetAll()
+                        .Where(c => c.Email == user_email)
+                        .Select(c => c.Idclient).FirstOrDefault();
+
+                    if (HttpContext.Session.GetString("panier") == null)
+                    {
+                        Commande panier = new Commande();
+                        //ajouter l'id client (pas l'objet client)
+                        string str_panier = JsonConvert.SerializeObject(panier);
+                        HttpContext.Session.SetString("panier", str_panier);
+                    }
+                    Commande panier_courant = JsonConvert.DeserializeObject<Commande>(HttpContext.Session.GetString("panier"));
+
                     DetailsCommande ShoppingCart = new DetailsCommande();
+                    
+                    //ajouter les proprietes details commandes..
+                    //ne renseigner que les ids, pas l'objet
+
+                    //panier courant avec details commande ou pas ? incrementer selon la quantite ? 
+
                     //PopulateProductsList(customer.SelectedProductsList);
 
                 }

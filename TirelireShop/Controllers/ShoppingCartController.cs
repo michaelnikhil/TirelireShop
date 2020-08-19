@@ -27,11 +27,9 @@ namespace TirelireShop.Controllers
         }
 
 
-
-
         public IActionResult Index()
         {
-            return View();
+            return View(repoCommande.GetAll());
         }
     }
 }
