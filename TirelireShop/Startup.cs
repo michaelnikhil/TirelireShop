@@ -53,7 +53,6 @@ namespace TirelireShop
                 options.AddPolicy("RequireEmail", policy => policy.RequireClaim(ClaimTypes.Email));
             });
 
-
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
