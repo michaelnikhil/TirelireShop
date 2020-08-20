@@ -15,13 +15,15 @@ namespace TirelireShop.Controllers
     public class PanierController : Controller
     {
 
-        private IRepository<DetailsCommande> repoCommande;
+        private IRepository<Commande> repoCommande;
+        private IRepository<DetailsCommande> repoDetailsCommande;
         private DBTirelireShopContext ctx;
 
         public PanierController()
         {
             ctx = new DBTirelireShopContext();
-            repoCommande = new RepositoryTirelire<DetailsCommande>(ctx);
+            repoCommande = new RepositoryTirelire<Commande>(ctx);
+            repoDetailsCommande = new RepositoryTirelire<DetailsCommande>(ctx);
         }
 
         public IActionResult Index()
@@ -54,6 +56,23 @@ namespace TirelireShop.Controllers
             }
             return RedirectToAction("Index", "Home", new { area = "" });
         }
+
+        public IActionResult Order()
+        {
+            if (ModelState.IsValid)
+            {
+                if (User.Identity.IsAuthenticated)
+                {
+                    if (HttpContext.Session.GetString("panier") != null)
+                    {
+                        Commande panier_courant = JsonConvert.DeserializeObject<Commande>(HttpContext.Session.GetString("panier"));
+                        repoCommande.InsertItem(panier_courant);                      
+                    }
+                }
+            }
+            return RedirectToAction("Index", "Home", new { area = "" });
+        }
+
     }
 }
 
