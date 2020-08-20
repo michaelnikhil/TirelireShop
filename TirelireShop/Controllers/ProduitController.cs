@@ -212,19 +212,5 @@ namespace TirelireShop.Controllers
             return RedirectToAction("Index", "Home", new { area = "" }); 
         }
 
-
-
-
-
-                    private void PopulateProductsList(List<int> Id = null)
-        {
-            var products = from p in repoProduit.GetAll()
-                           orderby p.Nom
-                           select p.Nom;
-
-            ViewBag.ProductsList = new MultiSelectList(products);
-        }
-
-
     }
 }

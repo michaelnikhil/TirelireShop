@@ -16,10 +16,7 @@ namespace TirelireShop.Controllers
     {
 
         private IRepository<DetailsCommande> repoCommande;
-
         private DBTirelireShopContext ctx;
-        private List<DetailsCommande> commandes;
-        private SessionStateViewModel sessionModel;
 
         public PanierController()
         {
