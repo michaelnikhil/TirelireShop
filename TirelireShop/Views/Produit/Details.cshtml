@@ -5,96 +5,126 @@
 }
 
 <div class="into">
-    Details produit
+    @Html.DisplayFor(model => model.Nom)
 </div>
 
+<hr />
 
-<div>
+<div class="row">
+    <div class="column">
+        <div class="info" title="Details">
+            <dl class="row">
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.Nom)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Nom)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.Hauteur)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Hauteur)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.Longueur)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Longueur)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.Largeur)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Largeur)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.Poids)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Poids)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.Capacite)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Capacite)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.Prix)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Prix)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.DescriptionFabricant)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.DescriptionFabricant)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.Idimage)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Idimage)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.StatutActivation)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.StatutActivation)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.IdcouleurNavigation)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.IdcouleurNavigation.Couleur1)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.IdfabricantNavigation)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.IdfabricantNavigation.Nom)
+                </dd>
+            </dl>
+        </div>
+    </div>
 
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Nom)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Nom)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Hauteur)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Hauteur)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Longueur)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Longueur)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Largeur)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Largeur)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Poids)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Poids)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Capacite)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Capacite)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Prix)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Prix)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DescriptionFabricant)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DescriptionFabricant)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Idimage)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Idimage)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.StatutActivation)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.StatutActivation)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.IdcouleurNavigation)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.IdcouleurNavigation.Couleur1)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.IdfabricantNavigation)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.IdfabricantNavigation.Nom)
-        </dd>
-    </dl>
+    <div class="column">
         <div class="photo-display">
             <img class="photo-display-img" src="@Url.Action("GetImage", "Home", new { Id = Model.Idproduit })" />
         </div>
+    </div>
+    <div class="column">
+        <form asp-action="AddToCart" asp-route-id="@Model.Idproduit" method="post" enctype="multipart/form-data">
 
+            <div class="info">
+                <div class="form-group">
+                    <div>Quantité</div>
+                    <select id="quantity">
+                        <option selected="selected" value="0">0</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+                <!--<a class="nav-link text-info" asp-action="AddToCart" asp-route-id="@Model.Idproduit">Ajouter au panier</a> -->
+
+                <div class="form-group">
+                    <input type="submit" value="Ajouter au panier" class="btn btn-primary btn-sm" />
+                </div>
+            </div>
+        </form>
+
+    </div>
 </div>
 <div>
+
     <a asp-action="Edit" asp-route-id="@Model.Idproduit">Edit</a> |
-    <a asp-action="Index">Back to List</a> |
-    <a asp-action="AddToCart" asp-route-id="@Model.Idproduit">Ajouter au panier</a>
+    <a asp-action="Index">Back to List</a>
+
 </div>
 
 

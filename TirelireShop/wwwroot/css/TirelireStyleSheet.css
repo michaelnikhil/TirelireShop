@@ -17,8 +17,9 @@ tr{
     text-align:left
 }
 
-.row{
-    text-align:left
+.row {
+    text-align: left ;
+    display: flex;
 }
 
 .into {
@@ -179,7 +180,7 @@ ul {
 }
 
 input[type=submit], button {
-    width: 180px;
+    
     background-color: #279b1f;
     color: white;
     margin-top: 20px;
@@ -217,4 +218,21 @@ form {
 
 .display-info {
     max-height: 105px;
+}
+
+.info {
+    font-family: Arial;
+    background-color: #ffffff;
+    padding: 0;
+    margin: 10px 5px 15px 18px;
+    padding: 25px;
+    border: 1px solid #d6d4d4;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.column {
+    flex: 33.33%;
+    padding: 5px;
 }

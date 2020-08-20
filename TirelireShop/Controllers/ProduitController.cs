@@ -161,28 +161,47 @@ namespace TirelireShop.Controllers
                     IdentityUser user = await _userManager.FindByIdAsync(id_user);
                     string user_email = user.Email;
 
-                    int? client_email = repoClient.GetAll()
+                    int? IdClient = repoClient.GetAll()
                         .Where(c => c.Email == user_email)
                         .Select(c => c.Idclient).FirstOrDefault();
 
-                    if (HttpContext.Session.GetString("panier") == null)
+                    if (IdClient != null) //check if client is associated to user
                     {
-                        Commande panier = new Commande();
-                        //ajouter l'id client (pas l'objet client)
-                        string str_panier = JsonConvert.SerializeObject(panier);
-                        HttpContext.Session.SetString("panier", str_panier);
+                        
+                        if (HttpContext.Session.GetString("panier") == null) //check if shopping cart exists
+                        {
+                            Commande panier = new Commande();
+                            panier.Idclient = (int) IdClient;
+                            panier.Date = DateTime.Now;
+                            panier.IdstatutCommande = 1; //statut1 = commande preparee
+                            string str_panier = JsonConvert.SerializeObject(panier);
+                            HttpContext.Session.SetString("panier", str_panier);
+                        }
+                        Commande panier_courant = JsonConvert.DeserializeObject<Commande>(HttpContext.Session.GetString("panier"));
+
+                        DetailsCommande detail = new DetailsCommande();
+                        detail.Idproduit = id;
+                        detail.Quantite = 1;
+                        detail.Prix = repoProduit.GetItem(id).Prix;
+
+                        panier_courant.DetailsCommande.Add(detail);
+                        string str_panier_courant = JsonConvert.SerializeObject(panier_courant);
+                        HttpContext.Session.SetString("panier", str_panier_courant);
+
+
+                        //string strDDLValue = form["ddlVendor"].ToString();
+
+
+
+                        //ajouter les proprietes details commandes..
+                        //ne renseigner que les ids, pas l'objet
+
+                        //panier courant avec details commande ou pas ? incrementer selon la quantite ? 
+                        //resialiser en json pour remettre dans le tableau de session
+
+
+
                     }
-                    Commande panier_courant = JsonConvert.DeserializeObject<Commande>(HttpContext.Session.GetString("panier"));
-
-                    DetailsCommande ShoppingCart = new DetailsCommande();
-                    
-                    //ajouter les proprietes details commandes..
-                    //ne renseigner que les ids, pas l'objet
-
-                    //panier courant avec details commande ou pas ? incrementer selon la quantite ? 
-
-                    //PopulateProductsList(customer.SelectedProductsList);
-
                 }
                 else
                 {
@@ -201,7 +220,6 @@ namespace TirelireShop.Controllers
 
             ViewBag.ProductsList = new MultiSelectList(products);
         }
-
 
 
     }
