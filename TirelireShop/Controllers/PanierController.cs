@@ -31,10 +31,28 @@ namespace TirelireShop.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (HttpContext.Session.GetString("panier") != null)
+                if (User.Identity.IsAuthenticated)
                 {
-                    Commande panier_courant = JsonConvert.DeserializeObject<Commande>(HttpContext.Session.GetString("panier"));
-                    return View(panier_courant.DetailsCommande);
+                    if (HttpContext.Session.GetString("panier") != null)
+                    {
+                        Commande panier_courant = JsonConvert.DeserializeObject<Commande>(HttpContext.Session.GetString("panier"));
+                        return View(panier_courant.DetailsCommande);
+                    }
+                }
+            }
+            return RedirectToAction("Index", "Home", new { area = "" });
+        }
+
+        public IActionResult ResetShoppingCart()
+        {
+            if (ModelState.IsValid)
+            {
+                if (User.Identity.IsAuthenticated)
+                {
+                    if (HttpContext.Session.GetString("panier") != null)
+                    {
+                        HttpContext.Session.Clear();
+                    }
                 }
             }
             return RedirectToAction("Index", "Home", new { area = "" });
