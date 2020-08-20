@@ -167,7 +167,6 @@ namespace TirelireShop.Controllers
 
                     if (IdClient != null) //check if client is associated to user
                     {
-                        
                         if (HttpContext.Session.GetString("panier") == null) //check if shopping cart exists
                         {
                             Commande panier = new Commande();
@@ -185,6 +184,7 @@ namespace TirelireShop.Controllers
                         detail.Prix = repoProduit.GetItem(id).Prix;
 
                         panier_courant.DetailsCommande.Add(detail);
+                        
                         string str_panier_courant = JsonConvert.SerializeObject(panier_courant);
                         HttpContext.Session.SetString("panier", str_panier_courant);
 

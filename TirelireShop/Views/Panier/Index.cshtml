@@ -1,38 +1,45 @@
 ﻿@model IEnumerable<TirelireShop.DetailsCommande>
-    @{
-        ViewData["Title"] = "Panier";
-    }
+@{
+    ViewData["Title"] = "Panier";
+}
 
-    <table class="table">
-        <thead>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Idproduit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantite)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prix)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
             <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Idproduit)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Quantite)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Prix)
-                </th>
-                <th></th>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Idproduit)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantite)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prix)
+                </td>
             </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Idproduit)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Quantite)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Prix)
-                    </td>
-                </tr>
-            }
-            </tbody>
-    </table>
+        }
+    </tbody>
+</table>
 
+<a asp-controller="Home" asp-action="Index">Home</a>
+
+
+@section Scripts
+{
+    <script src="~/js/form-functions.js"></script>
+}

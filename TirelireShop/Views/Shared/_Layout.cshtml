@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http;
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -45,12 +46,14 @@
                 </div>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse ">
                     <ul class="navbar-nav flex-grow-1">
-
-
+                        
+                        @if (Context.Session.GetString("panier") != null)
+                        {
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Panier" asp-action="Index">Panier</a>
                         </li>
-                        </ul>
+                        }
+                    </ul>
                 </div>
                 </div>
 

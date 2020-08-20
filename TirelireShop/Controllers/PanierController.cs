@@ -35,11 +35,13 @@ namespace TirelireShop.Controllers
                 {
                     Commande panier_courant = JsonConvert.DeserializeObject<Commande>(HttpContext.Session.GetString("panier"));
                     return View(panier_courant.DetailsCommande);
-
                 }
             }
-
             return RedirectToAction("Index", "Home", new { area = "" });
         }
     }
 }
+
+
+
+
