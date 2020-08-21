@@ -86,8 +86,13 @@ namespace TirelireShop
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    name: "doubleParam",
+                    pattern: "{controller=Home}/{action=Index}/{id}/{qte}");
+
+                endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
                 endpoints.MapRazorPages();
             });
         }

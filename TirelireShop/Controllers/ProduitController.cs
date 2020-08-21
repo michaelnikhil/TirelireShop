@@ -13,6 +13,7 @@ using Microsoft.Extensions.Caching.Memory;
 using Newtonsoft.Json;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore.Query;
 
 namespace TirelireShop.Controllers
 {
@@ -148,8 +149,10 @@ namespace TirelireShop.Controllers
             }
         }
 
-        public async Task<IActionResult> AddToCart(int id)
+      
+        public async Task<ContentResult> AddToCart(int id, int qte)
         {
+
             if (ModelState.IsValid)
             {
                 if (User.Identity.IsAuthenticated)
@@ -181,36 +184,33 @@ namespace TirelireShop.Controllers
                         //create a new detailCommande and associate to commande
                         DetailsCommande detail = new DetailsCommande();
                         detail.Idproduit = id;
-                        detail.Quantite = 1;
+                        //if (qte != null)
+                        //{
+                        detail.Quantite = qte;
+                        //}
+                        //else
+                        //{
+                        //    detail.Quantite = 1;
+                        //}
+                        
                         detail.Prix = repoProduit.GetItem(id).Prix;
 
                         panier_courant.DetailsCommande.Add(detail);
                         
                         string str_panier_courant = JsonConvert.SerializeObject(panier_courant);
                         HttpContext.Session.SetString("panier", str_panier_courant);
-
-
-                        //string strDDLValue = form["ddlVendor"].ToString();
-
-
-
-                        //ajouter les proprietes details commandes..
-                        //ne renseigner que les ids, pas l'objet
-
-                        //panier courant avec details commande ou pas ? incrementer selon la quantite ? 
-                        //resialiser en json pour remettre dans le tableau de session
-
-
-
                     }
                 }
                 else
                 {
-                    return RedirectToAction("Login", "Account", new { area = "" });
+                    //return RedirectToAction("Login", "Account", new { area = "" });
+                    return Content("erreur");
                 }
             }
+            Commande panier_courant2 = JsonConvert.DeserializeObject<Commande>(HttpContext.Session.GetString("panier"));
+            //return RedirectToAction("Index", "Home", new { area = "" }); 
+            return Content(string.Format("ajout de {0} pour le produit {1}", qte, id));
 
-            return RedirectToAction("Index", "Home", new { area = "" }); 
         }
 
     }
