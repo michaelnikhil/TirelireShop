@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace TirelireShop
 {
@@ -8,6 +9,7 @@ namespace TirelireShop
         public int IddetailsCommande { get; set; }
         public int Idcommande { get; set; }
         public int Idproduit { get; set; }
+        [DisplayName("Quantité")]
         public int Quantite { get; set; }
         public decimal Prix { get; set; }
 

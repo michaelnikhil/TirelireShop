@@ -7,10 +7,13 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Idproduit)
+                @Html.DisplayNameFor(model => model.IdproduitNavigation.Nom)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Quantite)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdproduitNavigation.Poids)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Prix)
@@ -21,17 +24,20 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Idproduit)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Quantite)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Prix)
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdproduitNavigation.Nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantite)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdproduitNavigation.Poids)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prix)
+            </td>
+        </tr>
         }
     </tbody>
 </table>

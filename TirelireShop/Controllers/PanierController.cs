@@ -14,7 +14,7 @@ namespace TirelireShop.Controllers
 {
     public class PanierController : Controller
     {
-
+        private IRepository<Produit> repoProduit;
         private IRepository<Commande> repoCommande;
         private IRepository<DetailsCommande> repoDetailsCommande;
         private DBTirelireShopContext ctx;
@@ -22,6 +22,7 @@ namespace TirelireShop.Controllers
         public PanierController()
         {
             ctx = new DBTirelireShopContext();
+            repoProduit = new RepositoryTirelire<Produit>(ctx);
             repoCommande = new RepositoryTirelire<Commande>(ctx);
             repoDetailsCommande = new RepositoryTirelire<DetailsCommande>(ctx);
         }
@@ -35,6 +36,12 @@ namespace TirelireShop.Controllers
                     if (HttpContext.Session.GetString("panier") != null)
                     {
                         Commande panier_courant = JsonConvert.DeserializeObject<Commande>(HttpContext.Session.GetString("panier"));
+
+                        //associer table commande et produit en passant par detailProduit, pour afficher nom, poids 
+                        foreach (DetailsCommande detail in panier_courant.DetailsCommande)
+                        {
+                            detail.IdproduitNavigation = repoProduit.GetItem(detail.Idproduit);
+                        }
                         return View(panier_courant.DetailsCommande);
                     }
                 }
@@ -66,7 +73,10 @@ namespace TirelireShop.Controllers
                     if (HttpContext.Session.GetString("panier") != null)
                     {
                         Commande panier_courant = JsonConvert.DeserializeObject<Commande>(HttpContext.Session.GetString("panier"));
-                        repoCommande.InsertItem(panier_courant);                      
+                        repoCommande.InsertItem(panier_courant);
+
+                        //reset shopping cart
+                        HttpContext.Session.Clear();
                     }
                 }
             }

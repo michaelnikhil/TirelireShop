@@ -26,7 +26,7 @@ namespace TirelireShop
         [DisplayName("Couleur")]
         public int Idcouleur { get; set; }
         public decimal Prix { get; set; }
-        [DisplayName("Description par le fabricant")]
+        [DisplayName("Description")]
         public string DescriptionFabricant { get; set; }
         public int Idimage { get; set; }
         [DisplayName("A la vente")]

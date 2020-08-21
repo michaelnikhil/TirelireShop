@@ -178,6 +178,7 @@ namespace TirelireShop.Controllers
                         }
                         Commande panier_courant = JsonConvert.DeserializeObject<Commande>(HttpContext.Session.GetString("panier"));
 
+                        //create a new detailCommande and associate to commande
                         DetailsCommande detail = new DetailsCommande();
                         detail.Idproduit = id;
                         detail.Quantite = 1;
