@@ -13,12 +13,14 @@
                 @Html.DisplayNameFor(model => model.Quantite)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdproduitNavigation.Poids)
+                Poids (kg)
+            </th>
+            @*@<th>
+                Prix (euros)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Prix)
-            </th>
-            <th></th>
+                Frais de livraison (euros)
+            </th>*@
         </tr>
     </thead>
     <tbody>
@@ -31,12 +33,15 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Quantite)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdproduitNavigation.Poids)
+            @*<td>
+                @(item.IdproduitNavigation.Poids* item.Quantite)
+            </td>*@
+            @*@<td>
+                @(item.Prix * item.Quantite)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Prix)
-            </td>
+                @(item.IdproduitNavigation.Poids* item.Quantite*2)
+            </td>*@
         </tr>
         }
     </tbody>
@@ -54,7 +59,3 @@
 <a asp-controller="Home" asp-action="Index">Home</a>
 
 
-@section Scripts
-{
-    <script src="~/js/form-functions.js"></script>
-}

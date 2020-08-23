@@ -184,15 +184,7 @@ namespace TirelireShop.Controllers
                         //create a new detailCommande and associate to commande
                         DetailsCommande detail = new DetailsCommande();
                         detail.Idproduit = id;
-                        //if (qte != null)
-                        //{
-                        detail.Quantite = qte;
-                        //}
-                        //else
-                        //{
-                        //    detail.Quantite = 1;
-                        //}
-                        
+                        detail.Quantite = qte;   //Ajax call                   
                         detail.Prix = repoProduit.GetItem(id).Prix;
 
                         panier_courant.DetailsCommande.Add(detail);
@@ -207,10 +199,8 @@ namespace TirelireShop.Controllers
                     return Content("erreur");
                 }
             }
-            Commande panier_courant2 = JsonConvert.DeserializeObject<Commande>(HttpContext.Session.GetString("panier"));
             //return RedirectToAction("Index", "Home", new { area = "" }); 
             return Content(string.Format("ajout de {0} pour le produit {1}", qte, id));
-
         }
 
     }

@@ -15,15 +15,17 @@ namespace TirelireShop.Controllers
     {
         private SignInManager<IdentityUser> _signInManager;
         private UserManager<IdentityUser> _userManager;
-        //private RoleManager<IdentityRole> _roleManager;
+        private RoleManager<IdentityRole> _roleManager;
         private IRepository<Client> repoClient;
         private DBTirelireShopContext ctx;
 
-        public AccountController(SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager)
+        public AccountController(SignInManager<IdentityUser> signInManager, 
+            UserManager<IdentityUser> userManager, 
+            RoleManager<IdentityRole> roleManager)
         {
             _signInManager = signInManager;
             _userManager = userManager;
-            //_roleManager = roleManager;
+            _roleManager = roleManager;
             ctx = new DBTirelireShopContext();
             repoClient = new RepositoryTirelire<Client>(ctx);
         }
@@ -80,16 +82,16 @@ namespace TirelireShop.Controllers
                 var result = await _userManager.CreateAsync(user, registerModel.Password);
                 if (result.Succeeded)
                 {
-                    //bool roleExists = await _roleManager.RoleExistsAsync(registerModel.RoleName);
-                    //if (!roleExists)
-                    //{
-                    //    await _roleManager.CreateAsync(new IdentityRole(registerModel.RoleName));
-                    //}
+                    bool roleExists = await _roleManager.RoleExistsAsync(registerModel.RoleName);
+                    if (!roleExists)
+                    {
+                        await _roleManager.CreateAsync(new IdentityRole(registerModel.RoleName));
+                    }
 
-                    //if (!await _userManager.IsInRoleAsync(user, registerModel.RoleName))
-                    //{
-                    //    await _userManager.AddToRoleAsync(user, registerModel.RoleName);
-                    //}
+                    if (!await _userManager.IsInRoleAsync(user, registerModel.RoleName))
+                    {
+                        await _userManager.AddToRoleAsync(user, registerModel.RoleName);
+                    }
 
                     if (!string.IsNullOrWhiteSpace(user.Email))
                     {
@@ -100,16 +102,18 @@ namespace TirelireShop.Controllers
                     var resultSignIn = await _signInManager.PasswordSignInAsync(registerModel.UserName, registerModel.Password, registerModel.RememberMe, false);
                     if (resultSignIn.Succeeded)
                     {
-                        //2. Update DBTirelireShop context
-                        Client client = new Client
+                        if (registerModel.RoleName == "Client")
                         {
-                            Nom = registerModel.LastName,
-                            Prenom = registerModel.FirstName,
-                            Email = registerModel.Email,
-                            StatutCompte = true
-                        };
-                        repoClient.InsertItem(client);
-
+                            //2. Update DBTirelireShop context
+                            Client client = new Client
+                            {
+                                Nom = registerModel.LastName,
+                                Prenom = registerModel.FirstName,
+                                Email = registerModel.Email,
+                                StatutCompte = true
+                            };
+                            repoClient.InsertItem(client);
+                        }
                         return RedirectToAction("Index", "Home");
                     }
                 }

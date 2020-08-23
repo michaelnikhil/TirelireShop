@@ -117,8 +117,6 @@
 
 
             <script type="text/javascript">
-
-
                 function ajoutPanier() {
                     var qte = $("#quantity").val();
                     $.ajax(
@@ -132,12 +130,11 @@
                             success: function (resultat) {                           
                                 //window.location.href = "home/index"
                                 alert(resultat)
-                            }
+                            },
+                            error: function() {alert("erreur Ajax")}
                         }
                     );
-                    //window.location.href="home/index"
                 };
-
             </script>
 
         </form>
