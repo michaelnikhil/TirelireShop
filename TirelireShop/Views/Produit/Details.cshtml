@@ -142,9 +142,18 @@
     </div>
 </div>
 <div>
-    
-    <a asp-action="Edit" asp-route-id="@Model.Idproduit">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+
+    @if (User.IsInRole("Administrator"))
+    {
+        <a asp-action="Edit" asp-route-id="@Model.Idproduit">Edit</a>
+        <a asp-action="Index">Back to List</a>
+    }
+    else
+    {
+        <a asp-controller="Home" asp-action="Index">Home</a>
+    }
+
+
 
 </div>
 
