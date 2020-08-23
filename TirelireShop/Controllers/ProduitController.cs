@@ -14,6 +14,7 @@ using Newtonsoft.Json;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore.Query;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TirelireShop.Controllers
 {
@@ -39,18 +40,21 @@ namespace TirelireShop.Controllers
         }
 
         // GET: ProduitController
+        [Authorize(Roles = "Administrator")]
         public ActionResult Index()
         {
             return View(repoProduit.GetAll());
         }
 
         // GET: ProduitController/Details/5
+        [AllowAnonymous]
         public ActionResult Details(int id)
         {
             return View(repoProduit.GetItem(id));
         }
 
         // GET: ProduitController/Create
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create()
         {
             //list des couleurs pour la select list
@@ -68,6 +72,7 @@ namespace TirelireShop.Controllers
         // POST: ProduitController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create(Produit produit, IFormFile fichier)
         {
             try
@@ -114,6 +119,7 @@ namespace TirelireShop.Controllers
         // POST: ProduitController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(Produit produit)
         {
             try
@@ -136,6 +142,7 @@ namespace TirelireShop.Controllers
         // POST: ProduitController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(Produit produit)
         {
             try
