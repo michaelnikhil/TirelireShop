@@ -29,8 +29,8 @@
         @foreach (var item in Model)
         {
 
-            @(total += item.Prix * item.Quantite + item.IdproduitNavigation.Poids * item.Quantite * 2 / 100);
-            
+            total += item.Prix * item.Quantite + item.IdproduitNavigation.Poids * item.Quantite * 2 / 100; 
+
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.IdproduitNavigation.Nom)
@@ -47,7 +47,12 @@
                 <td>
                     @(item.IdproduitNavigation.Poids* item.Quantite*2 / 100)
                 </td>
+                <td>
+                    <a asp-controller="Panier" asp-action="EditShoppingCart" asp-route-idproduit=@item.Idproduit class="btn btn-outline-primary btn-sm">Modifier</a>
+                    <a asp-controller="Panier" asp-action="RemoveFromShoppingCart"  asp-route-idproduit=@item.Idproduit class="btn btn-outline-primary btn-sm">Supprimer </a>
+                </td>
             </tr>
+
         }
     </tbody>
 </table>

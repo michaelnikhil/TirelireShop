@@ -62,7 +62,7 @@ namespace TirelireShop.Controllers
                     }
                 }
             }
-            return RedirectToAction("Index", "Home", new { area = "" });
+            return RedirectToAction("Index", "Home");
         }
 
         public IActionResult Order()
@@ -78,8 +78,55 @@ namespace TirelireShop.Controllers
                     }
                 }
             }
-            return RedirectToAction("Index", "Home", new { area = "" });
+            return RedirectToAction("Index", "Home");
         }
+
+        public ActionResult RemoveFromShoppingCart(int idproduit)
+        {
+            if (ModelState.IsValid)
+            {
+                if (User.Identity.IsAuthenticated)
+                {
+                    if (HttpContext.Session.GetString("panier") != null)
+                    {
+                        Commande panier_courant = JsonConvert.DeserializeObject<Commande>(HttpContext.Session.GetString("panier"));
+                        DetailsCommande detail = panier_courant.DetailsCommande.Where(d => d.Idproduit == idproduit).FirstOrDefault();
+                        if (detail != null)
+                        {
+                            panier_courant.DetailsCommande.Remove(detail);
+                        }
+                        string str_panier_courant = JsonConvert.SerializeObject(panier_courant);
+                        HttpContext.Session.SetString("panier", str_panier_courant);
+                        
+                    }
+                }
+            }
+            return RedirectToAction("Index", "Panier");
+        }
+
+        public ActionResult EditShoppingCart(int idproduit)
+        {
+            if (ModelState.IsValid)
+            {
+                if (User.Identity.IsAuthenticated)
+                {
+                    if (HttpContext.Session.GetString("panier") != null)
+                    {
+                        Commande panier_courant = JsonConvert.DeserializeObject<Commande>(HttpContext.Session.GetString("panier"));
+                        DetailsCommande detail = panier_courant.DetailsCommande.Where(d => d.Idproduit == idproduit).FirstOrDefault();
+                        if (detail != null)
+                        {
+                            panier_courant.DetailsCommande.Remove(detail);
+                        }
+                        string str_panier_courant = JsonConvert.SerializeObject(panier_courant);
+                        HttpContext.Session.SetString("panier", str_panier_courant);
+
+                    }
+                }
+            }
+            return RedirectToAction("Details", "Produit",new { id = idproduit } );
+        }
+
     }
 }
 
