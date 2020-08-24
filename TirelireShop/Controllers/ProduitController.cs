@@ -15,9 +15,11 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore.Query;
 using Microsoft.AspNetCore.Authorization;
+using System.Diagnostics;
 
 namespace TirelireShop.Controllers
 {
+    
     public class ProduitController : Controller
     {
 
@@ -174,29 +176,36 @@ namespace TirelireShop.Controllers
                             panier.Idclient = int.Parse(IdClient);
                             panier.Date = DateTime.Now;
                             panier.IdstatutCommande = 1; //statut1 = commande preparee
+                            panier.DetailsCommande = new List<DetailsCommande>();
                             string str_panier = JsonConvert.SerializeObject(panier);
                             HttpContext.Session.SetString("panier", str_panier);
                         }
                         Commande panier_courant = JsonConvert.DeserializeObject<Commande>(HttpContext.Session.GetString("panier"));
 
                         //create a new detailCommande and associate to commande
-                        DetailsCommande detail = new DetailsCommande();
-                        detail.Idproduit = id;
-                        detail.Quantite = qte;   //Ajax call                   
-                        detail.Prix = repoProduit.GetItem(id).Prix;
+                        //test si detail commande existe
+                        DetailsCommande detail = panier_courant.DetailsCommande.Where(d => d.Idproduit == id).FirstOrDefault();
+                        if (detail == null)
+                        {
+                            detail = new DetailsCommande() { Idproduit=id, Quantite=qte, Prix= repoProduit.GetItem(id).Prix};
+                            panier_courant.DetailsCommande.Add(detail);
+                        }
+                        else
+                        {
+                            detail.Quantite += qte;
+                        }
 
-                        panier_courant.DetailsCommande.Add(detail);
-                        
                         string str_panier_courant = JsonConvert.SerializeObject(panier_courant);
                         HttpContext.Session.SetString("panier", str_panier_courant);
                     }
                 }
                 else
                 {
-                    return RedirectToAction("Login", "Account", new { area = "" });
+                    return RedirectToAction("Login", "Account");
                 }
             }
-            return RedirectToAction("Index", "Home", new { area = "" }); 
+            return RedirectToAction("Index", "Panier"); 
+ 
         }
     }
 }

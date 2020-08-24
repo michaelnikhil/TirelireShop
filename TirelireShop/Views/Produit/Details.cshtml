@@ -120,6 +120,7 @@
                     var qte = $("#quantity").val();
                     $.ajax(
                         {
+                            async:false,
                             type: "POST",
                             url: "@Url.Action("AddToCart","Produit")",
                             data: {

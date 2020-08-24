@@ -46,7 +46,7 @@ namespace TirelireShop.Controllers
                     }
                 }
             }
-            return RedirectToAction("Index", "Home", new { area = "" });
+            return RedirectToAction("Index", "Home");
         }
 
         public IActionResult ResetShoppingCart()
