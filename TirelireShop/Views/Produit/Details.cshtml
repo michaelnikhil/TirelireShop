@@ -109,36 +109,32 @@
                     </select>
                 </div>
 
-                <div class="form-group">
-                    @*<input type="submit" value="Ajouter au panier" class="btn btn-primary btn-sm" id="subQuantity"/>*@
-                    <button class="btn btn-primary" onclick="ajoutPanier();">Ajouter au panier</button>
+                    <div class="form-group">
+                        @*<input type="submit" value="Ajouter au panier" class="btn btn-primary btn-sm" id="subQuantity"/>*@
+                        <button class="btn btn-primary" onclick="ajoutPanier();">Ajouter au panier</button>
+                    </div>
                 </div>
-            </div>
-
-
+                
             <script type="text/javascript">
                 function ajoutPanier() {
                     var qte = $("#quantity").val();
                     $.ajax(
                         {
-                            type: "GET",
+                            type: "POST",
                             url: "@Url.Action("AddToCart","Produit")",
                             data: {
                                 id:@Model.Idproduit,
                                 qte: qte
                             },
-                            success: function (resultat) {                           
-                                //window.location.href = "home/index"
-                                alert(resultat)
-                            },
+                            //success: function (resultat) {                           
+                            //    //window.location.href = "home/index"
+                            //    alert(resultat)}
                             error: function() {alert("erreur Ajax")}
                         }
                     );
                 };
             </script>
-
         </form>
-
     </div>
 </div>
 <div>

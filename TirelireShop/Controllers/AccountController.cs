@@ -8,6 +8,7 @@ using TirelireShop.ViewModels;
 using System.Security.Claims;
 using TirelireShop.DataAccess;
 using TirelireShop.Repository;
+using Microsoft.AspNetCore.Http;
 
 namespace TirelireShop.Controllers
 {
@@ -47,6 +48,23 @@ namespace TirelireShop.Controllers
                 var result = await _signInManager.PasswordSignInAsync(loginModel.UserName, loginModel.Password, loginModel.RememberMe, false);
                 if (result.Succeeded)
                 {
+                    //retrieve user email and compare to Client table
+                    var appUser = _signInManager.UserManager.Users.FirstOrDefault();
+                    string user_email = appUser.Email;
+
+                    int? IdClient = repoClient.GetAll()
+                        .Where(c => c.Email == user_email)
+                        .Select(c => c.Idclient).FirstOrDefault();
+
+                    if (IdClient != null) {
+                        //store client ID in session
+                        HttpContext.Session.Remove("IdClient");
+                        HttpContext.Session.SetString("IdClient", IdClient.ToString());
+                    }
+                    else
+                    {
+                        return RedirectToAction("Register", "Account");
+                    }
                     return RedirectToAction("Index", "Home");
                 }
             }

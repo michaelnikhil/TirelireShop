@@ -156,31 +156,22 @@ namespace TirelireShop.Controllers
             }
         }
 
-      
-        public async Task<ContentResult> AddToCart(int id, int qte)
+        [HttpPost]
+        public ActionResult AddToCart(int id, int qte)
         {
-
             if (ModelState.IsValid)
             {
                 if (User.Identity.IsAuthenticated)
                 {
+                    //check if client is associated to user
+                    string IdClient = HttpContext.Session.GetString("IdClient");
 
-                    //retrieve user email and compare to Client table
-                    Claim claim = User.Claims.ToList().FirstOrDefault();
-                    string id_user = claim.Value;
-                    IdentityUser user = await _userManager.FindByIdAsync(id_user);
-                    string user_email = user.Email;
-
-                    int? IdClient = repoClient.GetAll()
-                        .Where(c => c.Email == user_email)
-                        .Select(c => c.Idclient).FirstOrDefault();
-
-                    if (IdClient != null) //check if client is associated to user
+                    if (IdClient != null) 
                     {
                         if (HttpContext.Session.GetString("panier") == null) //check if shopping cart exists
                         {
                             Commande panier = new Commande();
-                            panier.Idclient = (int) IdClient;
+                            panier.Idclient = int.Parse(IdClient);
                             panier.Date = DateTime.Now;
                             panier.IdstatutCommande = 1; //statut1 = commande preparee
                             string str_panier = JsonConvert.SerializeObject(panier);
@@ -202,13 +193,10 @@ namespace TirelireShop.Controllers
                 }
                 else
                 {
-                    //return RedirectToAction("Login", "Account", new { area = "" });
-                    return Content("erreur");
+                    return RedirectToAction("Login", "Account", new { area = "" });
                 }
             }
-            //return RedirectToAction("Index", "Home", new { area = "" }); 
-            return Content(string.Format("ajout de {0} pour le produit {1}", qte, id));
+            return RedirectToAction("Index", "Home", new { area = "" }); 
         }
-
     }
 }

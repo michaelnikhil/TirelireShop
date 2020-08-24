@@ -13,14 +13,14 @@
                 @Html.DisplayNameFor(model => model.Quantite)
             </th>
             <th>
-                Poids (kg)
+                Poids Total (g)
             </th>
-            @*@<th>
+            <th>
                 Prix (euros)
             </th>
             <th>
                 Frais de livraison (euros)
-            </th>*@
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -33,15 +33,15 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Quantite)
             </td>
-            @*<td>
+            <td>
                 @(item.IdproduitNavigation.Poids* item.Quantite)
-            </td>*@
-            @*@<td>
+            </td>
+            <td>
                 @(item.Prix * item.Quantite)
             </td>
             <td>
                 @(item.IdproduitNavigation.Poids* item.Quantite*2)
-            </td>*@
+            </td>
         </tr>
         }
     </tbody>

@@ -57,7 +57,8 @@ namespace TirelireShop.Controllers
                 {
                     if (HttpContext.Session.GetString("panier") != null)
                     {
-                        HttpContext.Session.Clear();
+                        //reset shopping cart
+                        HttpContext.Session.Remove("panier");
                     }
                 }
             }
@@ -74,15 +75,11 @@ namespace TirelireShop.Controllers
                     {
                         Commande panier_courant = JsonConvert.DeserializeObject<Commande>(HttpContext.Session.GetString("panier"));
                         repoCommande.InsertItem(panier_courant);
-
-                        //reset shopping cart
-                        HttpContext.Session.Clear();
                     }
                 }
             }
             return RedirectToAction("Index", "Home", new { area = "" });
         }
-
     }
 }
 
