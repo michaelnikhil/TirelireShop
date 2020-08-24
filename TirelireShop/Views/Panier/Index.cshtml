@@ -1,6 +1,8 @@
 ﻿@model IEnumerable<TirelireShop.DetailsCommande>
 @{
     ViewData["Title"] = "Panier";
+        decimal total = 0;
+    
 }
 
 <table class="table">
@@ -26,36 +28,44 @@
     <tbody>
         @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdproduitNavigation.Nom)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantite)
-            </td>
-            <td>
-                @(item.IdproduitNavigation.Poids* item.Quantite)
-            </td>
-            <td>
-                @(item.Prix * item.Quantite)
-            </td>
-            <td>
-                @(item.IdproduitNavigation.Poids* item.Quantite*2)
-            </td>
-        </tr>
+
+            @(total += item.Prix * item.Quantite + item.IdproduitNavigation.Poids * item.Quantite * 2 / 100);
+            
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdproduitNavigation.Nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantite)
+                </td>
+                <td>
+                    @(item.IdproduitNavigation.Poids* item.Quantite)
+                </td>
+                <td>
+                    @(item.Prix * item.Quantite)
+                </td>
+                <td>
+                    @(item.IdproduitNavigation.Poids* item.Quantite*2 / 100)
+                </td>
+            </tr>
         }
     </tbody>
 </table>
 
-<div class="box" style="align-items:center">
-    <p>
-        <a asp-controller="Panier" asp-action="ResetShoppingCart" class="btn btn-primary">Vider le panier </a>
-        <a asp-controller="Panier" asp-action="Order" class="btn btn-primary">Commander </a>
-    </p>
+<div class="box" style="align-items:flex-end">
+    <a> Total </a>
+    <a >@total $ </a>
 </div>
 
+    <div class="box" style="align-items:center">
+        <p>
+            <a asp-controller="Panier" asp-action="ResetShoppingCart" class="btn btn-primary">Vider le panier </a>
+            <a asp-controller="Panier" asp-action="Order" class="btn btn-primary">Commander </a>
+        </p>
+    </div>
 
 
-<a asp-controller="Home" asp-action="Index">Home</a>
+
+    <a asp-controller="Home" asp-action="Index">Home</a>
 
 
