@@ -1,43 +1,71 @@
-﻿@model TirelireShop.DetailsCommande
-
+﻿@model IEnumerable<TirelireShop.DetailsCommande>
 @{
     ViewData["Title"] = "Details";
+            decimal total = 0;
 }
 
 <div class="into">
     Details commande
 </div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdproduitNavigation.Nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantite)
+            </th>
+            <th>
+                Poids Total (g)
+            </th>
+            <th>
+                Prix (euros)
+            </th>
+            <th>
+                Frais de livraison (euros)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
 
-<div>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Quantite)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Quantite)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Prix)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Prix)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IdcommandeNavigation)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdcommandeNavigation.Idcommande)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IdproduitNavigation)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdproduitNavigation.DescriptionFabricant)
-        </dd>
-    </dl>
+            total += item.Prix * item.Quantite + item.IdproduitNavigation.Poids * item.Quantite * 2 / 100;
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdproduitNavigation.Nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantite)
+                </td>
+                <td>
+                    @(item.IdproduitNavigation.Poids* item.Quantite)
+                </td>
+                <td>
+                    @(item.Prix * item.Quantite)
+                </td>
+                <td>
+                    @(item.IdproduitNavigation.Poids* item.Quantite*2 / 100)
+                </td>
+                <td>
+                    <a asp-controller="Panier" asp-action="EditShoppingCart" asp-route-idproduit=@item.Idproduit class="btn btn-outline-primary btn-sm">Modifier</a>
+                    <a asp-controller="Panier" asp-action="RemoveFromShoppingCart" asp-route-idproduit=@item.Idproduit class="btn btn-outline-primary btn-sm">Supprimer </a>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+
+<div class="box" style="align-items:flex-end">
+    <a> Total </a>
+    <a>@total $ </a>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.IddetailsCommande">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+
+
+
+
+
+<a asp-controller="Home" asp-action="Index">Home</a>

@@ -49,7 +49,7 @@ namespace TirelireShop.Controllers
                 if (result.Succeeded)
                 {
                     //retrieve user email and compare to Client table
-                    var appUser = _signInManager.UserManager.Users.FirstOrDefault();
+                    var appUser = _signInManager.UserManager.Users.Where(d=>d.UserName==loginModel.UserName).FirstOrDefault();
                     string user_email = appUser.Email;
 
                     int? IdClient = repoClient.GetAll()

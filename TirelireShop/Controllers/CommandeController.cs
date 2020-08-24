@@ -35,8 +35,9 @@ namespace TirelireShop.Controllers
         [Authorize(Roles = "Administrator")]
         public ActionResult Details(int id)
         {
-            IRepository<DetailsCommande>  repoDetails = new RepositoryTirelire<DetailsCommande>(ctx);         
-            return View(repoDetails.GetItem(id));
+            //IRepository<DetailsCommande>  repoDetails = new RepositoryTirelire<DetailsCommande>(ctx);
+            Commande commande = repoCommande.GetItem(id);
+            return View(commande.DetailsCommande);
         }
 
         // GET: CouleurController/Create  //on remplit le formulaire
