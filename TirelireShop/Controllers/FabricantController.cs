@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TirelireShop.DataAccess;
@@ -24,6 +25,7 @@ namespace TirelireShop.Controllers
 
 
         // GET: FabricantController
+        [Authorize(Roles = "Administrator")]
         public ActionResult Index()
         {
             return View(repoFabricant.GetAll());
@@ -31,12 +33,14 @@ namespace TirelireShop.Controllers
         }
 
         // GET: FabricantController/Details/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Details(int id)
         {
             return View(repoFabricant.GetItem(id));
         }
 
         // GET: FabricantController/Create
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create()
         {
             return View();
@@ -45,6 +49,7 @@ namespace TirelireShop.Controllers
         // POST: FabricantController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create(Fabricant fabricant)
         {
             try
@@ -59,6 +64,7 @@ namespace TirelireShop.Controllers
         }
 
         // GET: FabricantController/Edit/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(int id)
         {
             return View(repoFabricant.GetItem(id));
@@ -67,6 +73,7 @@ namespace TirelireShop.Controllers
         // POST: FabricantController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(Fabricant fabricant)
         {
             try
@@ -81,6 +88,7 @@ namespace TirelireShop.Controllers
         }
 
         // GET: FabricantController/Delete/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int id)
         {
             return View(repoFabricant.GetItem(id));
@@ -89,6 +97,7 @@ namespace TirelireShop.Controllers
         // POST: FabricantController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(Fabricant fabricant)
         {
             try

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TirelireShop.DataAccess;
@@ -21,18 +22,21 @@ namespace TirelireShop.Controllers
         }
 
         // GET: ClientController
+        [Authorize(Roles = "Administrator")]
         public ActionResult Index()
         {
             return View(repoClient.GetAll());
         }
 
         // GET: ClientController/Details/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Details(int id)
         {
             return View(repoClient.GetItem(id));
         }
 
         // GET: ClientController/Create
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create()
         {
             return View();
@@ -41,6 +45,7 @@ namespace TirelireShop.Controllers
         // POST: ClientController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create(Client client)
         {
             try
@@ -55,6 +60,7 @@ namespace TirelireShop.Controllers
         }
 
         // GET: ClientController/Edit/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(int id)
         {
             return View(repoClient.GetItem(id));
@@ -63,6 +69,7 @@ namespace TirelireShop.Controllers
         // POST: ClientController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(Client client)
         {
             try
@@ -77,6 +84,7 @@ namespace TirelireShop.Controllers
         }
 
         // GET: ClientController/Delete/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int id)
         {
             return View(repoClient.GetItem(id));
@@ -85,6 +93,7 @@ namespace TirelireShop.Controllers
         // POST: ClientController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(Client client)
         {
             try

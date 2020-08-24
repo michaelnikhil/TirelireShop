@@ -104,6 +104,7 @@ namespace TirelireShop.Controllers
         }
 
         // GET: ProduitController/Edit/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(int id)
         {
             //list des couleurs pour la select list
@@ -136,6 +137,7 @@ namespace TirelireShop.Controllers
         }
 
         // GET: ProduitController/Delete/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int id)
         {
             return View(repoProduit.GetItem(id));

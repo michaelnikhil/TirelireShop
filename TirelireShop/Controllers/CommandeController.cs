@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
@@ -24,12 +25,14 @@ namespace TirelireShop.Controllers
             repoCommande = new RepositoryTirelire<Commande>(ctx);
         }
 
+        [Authorize(Roles = "Administrator")]
         public ActionResult Index()
         {
             return View(repoCommande.GetAll());
         }
 
         // GET: CouleurController/Details/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Details(int id)
         {
             IRepository<DetailsCommande>  repoDetails = new RepositoryTirelire<DetailsCommande>(ctx);         
@@ -37,6 +40,7 @@ namespace TirelireShop.Controllers
         }
 
         // GET: CouleurController/Create  //on remplit le formulaire
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create()
         {
 
@@ -46,6 +50,7 @@ namespace TirelireShop.Controllers
         // POST: CouleurController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create(Commande commande)
         {
             try
@@ -60,6 +65,7 @@ namespace TirelireShop.Controllers
         }
 
         // GET: CouleurController/Edit/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(int id)
         {
 
@@ -69,6 +75,7 @@ namespace TirelireShop.Controllers
         // POST: CouleurController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(Commande commande)
         {
             try
@@ -83,6 +90,7 @@ namespace TirelireShop.Controllers
         }
 
         // GET: CouleurController/Delete/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int id)
         {
             return View(repoCommande.GetItem(id));
@@ -91,6 +99,7 @@ namespace TirelireShop.Controllers
         // POST: CouleurController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(Commande commande)
         {
             try

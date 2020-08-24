@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
@@ -22,18 +23,21 @@ namespace TirelireShop.Controllers
             repoImage = new RepositoryTirelire<Image>(ctx);
         }
 
+        [Authorize(Roles = "Administrator")]
         public ActionResult Index()
         {
             return View(repoImage.GetAll());
         }
 
         // GET: ImageController/Details/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Details(int id)
         {
             return View(repoImage.GetItem(id));
         }
 
         // GET: ImageController/Create  //on remplit le formulaire
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create()
         {
 
@@ -43,6 +47,7 @@ namespace TirelireShop.Controllers
         // POST: ImageController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create(Image image)
         {
             try
@@ -57,6 +62,7 @@ namespace TirelireShop.Controllers
         }
 
         // GET: ImageController/Edit/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(int id)
         {
 
@@ -66,6 +72,7 @@ namespace TirelireShop.Controllers
         // POST: ImageController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(Image image)
         {
             try
@@ -80,6 +87,7 @@ namespace TirelireShop.Controllers
         }
 
         // GET: ImageController/Delete/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int id)
         {
             return View(repoImage.GetItem(id));
@@ -88,6 +96,7 @@ namespace TirelireShop.Controllers
         // POST: ImageController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(Image image)
         {
             try
