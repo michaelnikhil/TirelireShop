@@ -47,10 +47,6 @@
                 <td>
                     @(item.IdproduitNavigation.Poids* item.Quantite*2 / 100)
                 </td>
-                <td>
-                    <a asp-controller="Panier" asp-action="EditShoppingCart" asp-route-idproduit=@item.Idproduit class="btn btn-outline-primary btn-sm">Modifier</a>
-                    <a asp-controller="Panier" asp-action="RemoveFromShoppingCart"  asp-route-idproduit=@item.Idproduit class="btn btn-outline-primary btn-sm">Supprimer </a>
-                </td>
             </tr>
 
         }
@@ -61,12 +57,7 @@
     <span class="editor-label">Total @total $ </span>
 </div>
 
-    <div class="box" style="align-items:center">
-        <p>
-            <a asp-controller="Panier" asp-action="ResetShoppingCart" class="btn btn-primary">Vider le panier </a>
-            <a asp-controller="Panier" asp-action="Order" class="btn btn-primary">Commander </a>
-        </p>
-    </div>
+
 
     <a asp-controller="Home" asp-action="Index">Home</a>
 

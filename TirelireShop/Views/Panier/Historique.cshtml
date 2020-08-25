@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<TirelireShop.Commande>
 
 @{
-    ViewData["Title"] = "ListOfOrders";
+    ViewData["Title"] = "Commandes passées";
 }
 
 <h1>ListOfOrders</h1>
@@ -34,7 +34,7 @@
                 @Html.DisplayFor(modelItem => item.IdstatutCommandeNavigation.StatutCommande1)
             </td>
             <td>
-                <a asp-action="Details" asp-route-id="@item.Idcommande"  class="btn btn-outline-primary btn-sm" >Details</a> 
+                <a asp-action="PanierOld" asp-route-IdCommande="@item.Idcommande"  class="btn btn-outline-primary btn-sm" >Details</a> 
             </td>
         </tr>
 }

@@ -142,6 +142,24 @@ namespace TirelireShop.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
+
+        public ActionResult PanierOld(int IdCommande)
+        {
+            if (ModelState.IsValid)
+            {
+                if (User.Identity.IsAuthenticated)
+                {
+                    if (HttpContext.Session.GetString("IdClient") != null)
+                    {
+                        int idclient = Int32.Parse(HttpContext.Session.GetString("IdClient"));
+                        Client client = repoClient.GetItem(idclient);
+                        Commande commande = client.Commande.Where(c => c.Idcommande == IdCommande).FirstOrDefault();
+                        return View(commande.DetailsCommande);
+                    }
+                }
+            }
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
 
