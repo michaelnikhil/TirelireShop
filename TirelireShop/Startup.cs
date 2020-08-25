@@ -29,8 +29,8 @@ namespace TirelireShop
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddDbContext<DBTirelireShopContext>(options => options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+/*            services.AddDbContext<DBTirelireShopContext>(options => options.UseSqlServer(
+                    Configuration.GetConnectionString("DefaultConnection")));*/
 
             services.AddDbContext<IdentityContext>(options =>
             options.UseSqlServer(

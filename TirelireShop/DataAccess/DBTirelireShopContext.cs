@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.Extensions.Configuration;
 
 namespace TirelireShop
 {
@@ -13,6 +14,7 @@ namespace TirelireShop
         public DBTirelireShopContext(DbContextOptions<DBTirelireShopContext> options)
             : base(options)
         {
+
         }
 
         public virtual DbSet<Avis> Avis { get; set; }
@@ -27,10 +29,15 @@ namespace TirelireShop
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            IConfiguration configuration = new ConfigurationBuilder()
+                .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+                .AddJsonFile("appsettings.json")
+                .Build();
+
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-RMPC51H\\SQLEXPRESS;Initial Catalog=DBTirelireShop;Integrated Security=True; Pooling=False");
+                optionsBuilder.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
                 optionsBuilder.UseLazyLoadingProxies();
             }
         }
