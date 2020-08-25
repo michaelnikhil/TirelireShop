@@ -120,29 +120,29 @@ namespace TirelireShop.Controllers
                         }
                         string str_panier_courant = JsonConvert.SerializeObject(panier_courant);
                         HttpContext.Session.SetString("panier", str_panier_courant);
-
                     }
                 }
             }
             return RedirectToAction("Details", "Produit",new { id = idproduit } );
         }
 
-        public ActionResult ListOfOrders(int idclient)
+        public ActionResult Historique()
         {
             if (ModelState.IsValid)
             {
                 if (User.Identity.IsAuthenticated)
                 {
-                    Client client = repoClient.GetItem(idclient);
-                    return View(client.Commande);
+                    if (HttpContext.Session.GetString("IdClient") != null)
+                    {
+                        int idclient = Int32.Parse(HttpContext.Session.GetString("IdClient"));
+                        Client client = repoClient.GetItem(idclient);
+                        return View(client.Commande);
+                    }
                 }
             }
-
             return RedirectToAction("Index", "Home");
         }
-
-
-        }
+    }
 }
 
 

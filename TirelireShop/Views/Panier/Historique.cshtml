@@ -6,9 +6,6 @@
 
 <h1>ListOfOrders</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -16,10 +13,10 @@
                 @Html.DisplayNameFor(model => model.Date)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdclientNavigation)
+                @Html.DisplayNameFor(model => model.Idcommande)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdstatutCommandeNavigation)
+               Statut
             </th>
             <th></th>
         </tr>
@@ -31,15 +28,13 @@
                 @Html.DisplayFor(modelItem => item.Date)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdclientNavigation.Email)
+                @Html.DisplayFor(modelItem => item.Idcommande)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IdstatutCommandeNavigation.StatutCommande1)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Idcommande">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Idcommande">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Idcommande">Delete</a>
+                <a asp-action="Details" asp-route-id="@item.Idcommande"  class="btn btn-outline-primary btn-sm" >Details</a> 
             </td>
         </tr>
 }
