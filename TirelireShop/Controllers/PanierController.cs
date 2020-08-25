@@ -16,7 +16,7 @@ namespace TirelireShop.Controllers
     {
         private IRepository<Produit> repoProduit;
         private IRepository<Commande> repoCommande;
-        private IRepository<DetailsCommande> repoDetailsCommande;
+        private IRepository<Client> repoClient;
         private DBTirelireShopContext ctx;
 
         public PanierController()
@@ -24,7 +24,7 @@ namespace TirelireShop.Controllers
             ctx = new DBTirelireShopContext();
             repoProduit = new RepositoryTirelire<Produit>(ctx);
             repoCommande = new RepositoryTirelire<Commande>(ctx);
-            repoDetailsCommande = new RepositoryTirelire<DetailsCommande>(ctx);
+            repoClient = new RepositoryTirelire<Client>(ctx);
         }
 
         public IActionResult Index()
@@ -127,7 +127,22 @@ namespace TirelireShop.Controllers
             return RedirectToAction("Details", "Produit",new { id = idproduit } );
         }
 
-    }
+        public ActionResult ListOfOrders(int idclient)
+        {
+            if (ModelState.IsValid)
+            {
+                if (User.Identity.IsAuthenticated)
+                {
+                    Client client = repoClient.GetItem(idclient);
+                    return View(client.Commande);
+                }
+            }
+
+            return RedirectToAction("Index", "Home");
+        }
+
+
+        }
 }
 
 
