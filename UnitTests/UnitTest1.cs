@@ -42,10 +42,28 @@ namespace UnitTests
         }
 
         [Test]
-        public void Test1()
+        public void Test1() //method getall
         {
             var result = repoCouleur.GetAll().Select(c => c.Couleur1).ToList();
             Assert.AreEqual(couleurs, result);
+        }
+
+        [Test]
+        public void Test2() //method getitem
+        {
+            var result = repoCouleur.GetItem(1).Couleur1.ToString();
+            string expected = couleurs[0];
+            Assert.AreEqual(expected, result);
+        }
+
+        [Test]
+        public void Test3() //method delete
+        {
+            Couleur couleur_remove = repoCouleur.GetItem(1);
+            repoCouleur.DeleteItem(couleur_remove);
+            var result = repoCouleur.GetAll().Select(c => c.Couleur1).ToList();
+            List<string> expected = new List<string>() { "bleu", "rouge" };
+            Assert.AreEqual(expected, result);
         }
     }
 }
