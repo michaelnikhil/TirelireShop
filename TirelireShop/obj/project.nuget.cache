@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "JyxCdtA9hvWzOhCC0ogHQK8hI9fxOjtAHjVV0KusOECydIAmYQXWsRrpYMzhmpPJ9B+2ggu37bFVSox//3CCqw==",
+  "dgSpecHash": "BzSTfFoMZIRXLWleDBrlIdxSGXzSmH1rMIh49H7pPC/YXaH/nZuf5v80Yg3zIwnUk3fhyI6O0odjBpCI+Rk6zQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\michael\\Source\\Repos\\MVCappli\\TirelireShop\\TirelireShop\\TirelireShop.csproj",
+  "projectFilePath": "C:\\Users\\michael\\Source\\Repos\\michaelnikhil\\TirelireShop\\TirelireShop\\TirelireShop.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\michael\\.nuget\\packages\\bootstrap\\4.5.2\\bootstrap.4.5.2.nupkg.sha512",
     "C:\\Users\\michael\\.nuget\\packages\\castle.core\\4.4.0\\castle.core.4.4.0.nupkg.sha512",

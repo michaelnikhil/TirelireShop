@@ -201,12 +201,6 @@ C:\Users\michael\Source\Repos\michaelnikhil\TirelireShop\TirelireShop\obj\Debug\
 C:\Users\michael\Source\Repos\michaelnikhil\TirelireShop\TirelireShop\obj\Debug\netcoreapp3.1\TirelireShop.dll
 C:\Users\michael\Source\Repos\michaelnikhil\TirelireShop\TirelireShop\obj\Debug\netcoreapp3.1\TirelireShop.pdb
 C:\Users\michael\Source\Repos\michaelnikhil\TirelireShop\TirelireShop\obj\Debug\netcoreapp3.1\TirelireShop.genruntimeconfig.cache
-C:\Users\michael\Source\Repos\michaelnikhil\TirelireShop\TirelireShop\bin\Debug\netcoreapp3.1\EntityFramework.SqlServer.dll
-C:\Users\michael\Source\Repos\michaelnikhil\TirelireShop\TirelireShop\bin\Debug\netcoreapp3.1\EntityFramework.dll
-C:\Users\michael\Source\Repos\michaelnikhil\TirelireShop\TirelireShop\bin\Debug\netcoreapp3.1\System.CodeDom.dll
-C:\Users\michael\Source\Repos\michaelnikhil\TirelireShop\TirelireShop\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
-C:\Users\michael\Source\Repos\michaelnikhil\TirelireShop\TirelireShop\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
-C:\Users\michael\Source\Repos\michaelnikhil\TirelireShop\TirelireShop\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\michael\Source\Repos\michaelnikhil\TirelireShop\TirelireShop\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.cshtml.g.cs
 C:\Users\michael\Source\Repos\michaelnikhil\TirelireShop\TirelireShop\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
 C:\Users\michael\Source\Repos\michaelnikhil\TirelireShop\TirelireShop\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs

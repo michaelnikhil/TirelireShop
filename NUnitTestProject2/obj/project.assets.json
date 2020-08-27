@@ -9402,11 +9402,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\michael\\Source\\Repos\\MVCappli\\TirelireShop\\NUnitTestProject2\\NUnitTestProject2.csproj",
+      "projectUniqueName": "C:\\Users\\michael\\Source\\Repos\\michaelnikhil\\TirelireShop\\NUnitTestProject2\\NUnitTestProject2.csproj",
       "projectName": "NUnitTestProject2",
-      "projectPath": "C:\\Users\\michael\\Source\\Repos\\MVCappli\\TirelireShop\\NUnitTestProject2\\NUnitTestProject2.csproj",
+      "projectPath": "C:\\Users\\michael\\Source\\Repos\\michaelnikhil\\TirelireShop\\NUnitTestProject2\\NUnitTestProject2.csproj",
       "packagesPath": "C:\\Users\\michael\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\michael\\Source\\Repos\\MVCappli\\TirelireShop\\NUnitTestProject2\\obj\\",
+      "outputPath": "C:\\Users\\michael\\Source\\Repos\\michaelnikhil\\TirelireShop\\NUnitTestProject2\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\michael\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -9422,8 +9422,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\michael\\Source\\Repos\\MVCappli\\TirelireShop\\TirelireShop\\TirelireShop.csproj": {
-              "projectPath": "C:\\Users\\michael\\Source\\Repos\\MVCappli\\TirelireShop\\TirelireShop\\TirelireShop.csproj"
+            "C:\\Users\\michael\\Source\\Repos\\michaelnikhil\\TirelireShop\\TirelireShop\\TirelireShop.csproj": {
+              "projectPath": "C:\\Users\\michael\\Source\\Repos\\michaelnikhil\\TirelireShop\\TirelireShop\\TirelireShop.csproj"
             }
           }
         }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "JKpr+o/9cVxFGHbXtTurN6v0oVpwXWWhKVNV1V4JPPwJ1kuyjk4ipLl8LCggqFWrgfY4tV28Bv7XRFLuj6gb0w==",
+  "dgSpecHash": "Znb6X5QPyjLis+tltIpl5v6XuyHI9GvTaAe6kEunZgVmjoYWRA5c+ejO2sZuoeUBE84vA61hvxLqdLSd47dgqw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\michael\\Source\\Repos\\MVCappli\\TirelireShop\\NUnitTestProject2\\NUnitTestProject2.csproj",
+  "projectFilePath": "C:\\Users\\michael\\Source\\Repos\\michaelnikhil\\TirelireShop\\NUnitTestProject2\\NUnitTestProject2.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\michael\\.nuget\\packages\\bootstrap\\4.5.2\\bootstrap.4.5.2.nupkg.sha512",
     "C:\\Users\\michael\\.nuget\\packages\\castle.core\\4.4.0\\castle.core.4.4.0.nupkg.sha512",
