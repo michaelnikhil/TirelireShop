@@ -67,5 +67,15 @@ namespace NUnitTestProject2
             List<string> expected = new List<string>() { "bleu", "rouge" };
             Assert.AreEqual(expected, result);
         }
+
+        [Test]
+        public void Test4() //method create
+        {
+            Couleur couleur_add = new Couleur { Couleur1 = "mauve" };
+            repoCouleur.InsertItem(couleur_add);
+            var result = repoCouleur.GetAll().Select(c => c.Couleur1).ToList();
+            List<string> expected = new List<string>() {"mauve", "bleu", "rouge" };
+            Assert.AreEqual(expected, result);
+        }
     }
 }
