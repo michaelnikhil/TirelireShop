@@ -14,7 +14,7 @@ namespace TirelireShop.Controllers
     public class CouleurController : Controller
     {
         IRepository<Couleur> repoCouleur;
-        DBTirelireShopContext ctx;
+        public DBTirelireShopContext ctx;  //for the unit test
         // GET: CouleurController
 
         public CouleurController()

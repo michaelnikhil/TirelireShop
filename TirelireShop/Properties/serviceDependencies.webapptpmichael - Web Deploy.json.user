@@ -1,0 +1,50 @@
+{
+  "dependencies": {
+    "mssql2": {
+      "restored": true,
+      "restoreTime": "2020-08-25T14:54:07.0331796Z"
+    },
+    "mssql1": {
+      "restored": true,
+      "restoreTime": "2020-08-25T14:54:41.2365226Z"
+    }
+  },
+  "parameters": {
+    "webapptpmichael.resourceName": {
+      "Type": null,
+      "Value": "webapptpmichael"
+    },
+    "mssql2.subscriptionId": {
+      "Type": "subscription",
+      "Value": "e1954d13-335c-41d8-9ea6-22561f872f9d"
+    },
+    "webapptpmichael.resourceGroupLocation": {
+      "Type": null,
+      "Value": "francecentral"
+    },
+    "webapptpmichael.resourceGroupName": {
+      "Type": "resourceGroup",
+      "Value": "Dev"
+    },
+    "mssql2.resourceGroupName": {
+      "Type": "resourceGroup",
+      "Value": "Dev"
+    },
+    "mssql1.subscriptionId": {
+      "Type": "subscription",
+      "Value": "e1954d13-335c-41d8-9ea6-22561f872f9d"
+    },
+    "mssql1.resourceGroupName": {
+      "Type": "resourceGroup",
+      "Value": "Dev"
+    },
+    "webapptpmichael.subscriptionId": {
+      "Type": "subscription",
+      "Value": "e1954d13-335c-41d8-9ea6-22561f872f9d"
+    },
+    "subscriptionId": {
+      "Type": "subscription",
+      "Value": "e1954d13-335c-41d8-9ea6-22561f872f9d"
+    }
+  }
+}
