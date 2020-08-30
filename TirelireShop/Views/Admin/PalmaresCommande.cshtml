@@ -1,27 +1,35 @@
-﻿@model IEnumerable<TirelireShop.Produit>
+﻿@model IEnumerable<TirelireShop.DetailsCommande>
 
 @{
-    ViewData["Title"] = "PalmaresCommande";
+    ViewData["Title"] = "Top 5 produits";
 }
 
-<h1>PalmaresCommande</h1>
+<h1>Top 5 produits</h1>
 
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Nom)
+                @Html.DisplayNameFor(model => model.IdproduitNavigation.Nom)
             </th>
-            <th></th>
-        </tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantite)
+            </th>
+
+
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nom)
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdproduitNavigation.Nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantite)
+                </td>
+            </tr>
+
+        }
     </tbody>
 </table>

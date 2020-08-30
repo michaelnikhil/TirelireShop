@@ -34,19 +34,33 @@ namespace TirelireShop.Controllers
 
         public IActionResult PalmaresCommande()
         {
-            IEnumerable<Produit> top5 = repoDetailsCommande.GetAll().Select(d =>  d.IdproduitNavigation).Take(5);
+            //IEnumerable<Produit> top5 = repoDetailsCommande.GetAll().Select(d =>  d.IdproduitNavigation).Take(5);
             //IEnumerable<Produit> top5 = repoDetailsCommande
             //    .GetAll()
             //    .Select(d => d.IdproduitNavigation)
             //    .Take(5);
             //var top5 = repoDetailsCommande
             //    .GetAll()
-            //    .GroupBy(c=>c.Idproduit)
-            //    .Select(c=> new 
-            //    {
-            //        Idproduit=
-            //    })
+            //    .GroupBy(c => c.Idproduit)
+            //    .Select(c => c.OrderBy(x => x.Quantite))
+            //    .Take(5);
 
+            //top5 produit : get Idproduit in DetailCommande table
+            IEnumerable < DetailsCommande > top5 = repoDetailsCommande
+                .GetAll()
+                .GroupBy(c => c.Idproduit)
+                .Select(group => new DetailsCommande
+                {
+                    Idproduit = group.Key,
+                    Quantite = group.Sum(hit => hit.Quantite),
+                    IdproduitNavigation = new Produit { Nom = 
+                    repoProduit.GetAll().Where(c=>c.Idproduit==group.Key).Select(d=>d.Nom).FirstOrDefault()
+                    }
+                })
+                .OrderByDescending(hit => hit.Quantite)
+                .Take(5);
+
+            //top5 produit : 2 - get Idproduit in DetailCommande table
             //    .Select(d => d.IdproduitNavigation)
             //    .Take(5);
 
