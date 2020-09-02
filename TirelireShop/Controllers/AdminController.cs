@@ -34,16 +34,6 @@ namespace TirelireShop.Controllers
 
         public IActionResult PalmaresCommande()
         {
-            //IEnumerable<Produit> top5 = repoDetailsCommande.GetAll().Select(d =>  d.IdproduitNavigation).Take(5);
-            //IEnumerable<Produit> top5 = repoDetailsCommande
-            //    .GetAll()
-            //    .Select(d => d.IdproduitNavigation)
-            //    .Take(5);
-            //var top5 = repoDetailsCommande
-            //    .GetAll()
-            //    .GroupBy(c => c.Idproduit)
-            //    .Select(c => c.OrderBy(x => x.Quantite))
-            //    .Take(5);
 
             //top5 produit : get Idproduit in DetailCommande table
             IEnumerable < DetailsCommande > top5 = repoDetailsCommande
@@ -60,17 +50,16 @@ namespace TirelireShop.Controllers
                 .OrderByDescending(hit => hit.Quantite)
                 .Take(5);
 
-            //top5 produit : 2 - get Idproduit in DetailCommande table
-            //    .Select(d => d.IdproduitNavigation)
-            //    .Take(5);
-
             return View(top5);
-            
-            
-            //List<Produit> top5 = repoDetailsCommande.GetAll()
-            //    .OrderBy(c => c.Quantite)
-            //    .GroupBy(c => c.Idproduit)
-            //    .Select(c => new Produit { });
+                  
+        }
+        public IActionResult PalmaresClient()
+        {
+            //top5 client
+            IEnumerable<Client> top5 = repoClient
+                .GetAll()
+                .Take(5);
+            return View(top5);
         }
 
     }
