@@ -432,3 +432,7 @@ C:\Users\michael\Source\Repos\MVCappli\TirelireShop\TirelireShop\obj\Debug\netco
 C:\Users\michael\Source\Repos\MVCappli\TirelireShop\TirelireShop\obj\Debug\netcoreapp3.1\TirelireShop.dll
 C:\Users\michael\Source\Repos\MVCappli\TirelireShop\TirelireShop\obj\Debug\netcoreapp3.1\TirelireShop.pdb
 C:\Users\michael\Source\Repos\MVCappli\TirelireShop\TirelireShop\obj\Debug\netcoreapp3.1\TirelireShop.genruntimeconfig.cache
+C:\Users\michael\Source\Repos\michaelnikhil\TirelireShop\TirelireShop\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.TirelireShopMichael - Web Deploy.json
+C:\Users\michael\Source\Repos\michaelnikhil\TirelireShop\TirelireShop\bin\Debug\netcoreapp3.1\Properties\ServiceDependencies\TirelireShopMichael - Web Deploy\mssql1.arm.json
+C:\Users\michael\Source\Repos\michaelnikhil\TirelireShop\TirelireShop\bin\Debug\netcoreapp3.1\Properties\ServiceDependencies\TirelireShopMichael - Web Deploy\mssql2.arm.json
+C:\Users\michael\Source\Repos\michaelnikhil\TirelireShop\TirelireShop\bin\Debug\netcoreapp3.1\Properties\ServiceDependencies\TirelireShopMichael - Web Deploy\profile.arm.json

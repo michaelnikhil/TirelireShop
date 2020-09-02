@@ -14,6 +14,6 @@
     <WebStackScaffolding_IsReferencingScriptLibrariesSelected>False</WebStackScaffolding_IsReferencingScriptLibrariesSelected>
     <WebStackScaffolding_LayoutPageFile />
     <WebStackScaffolding_DbContextTypeFullName>TirelireShop.DBTirelireShopContext</WebStackScaffolding_DbContextTypeFullName>
-    <NameOfLastUsedPublishProfile>webapptpmichael - Web Deploy</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>TirelireShopMichael - Web Deploy</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>

@@ -1,0 +1,30 @@
+{
+  "dependencies": {
+    "mssql2": {
+      "restored": true,
+      "restoreTime": "2020-09-02T18:21:50.2261293Z"
+    },
+    "mssql1": {
+      "restored": true,
+      "restoreTime": "2020-09-02T18:20:22.6040828Z"
+    }
+  },
+  "parameters": {
+    "mssql2.subscriptionId": {
+      "Type": "subscription",
+      "Value": "c35d69b6-d65d-4526-a55e-dd3c208ec330"
+    },
+    "mssql2.resourceGroupName": {
+      "Type": "resourceGroup",
+      "Value": "TirelireShopDev"
+    },
+    "mssql1.subscriptionId": {
+      "Type": "subscription",
+      "Value": "c35d69b6-d65d-4526-a55e-dd3c208ec330"
+    },
+    "mssql1.resourceGroupName": {
+      "Type": "resourceGroup",
+      "Value": "TirelireShopDev"
+    }
+  }
+}

@@ -215,3 +215,7 @@ C:\Users\michael\Source\Repos\michaelnikhil\TirelireShop\TirelireShop\obj\Releas
 C:\Users\michael\Source\Repos\michaelnikhil\TirelireShop\TirelireShop\bin\Release\netcoreapp3.1\Properties\serviceDependencies.webapptpmichael - Web Deploy.json
 C:\Users\michael\Source\Repos\michaelnikhil\TirelireShop\TirelireShop\bin\Release\netcoreapp3.1\Properties\ServiceDependencies\webapptpmichael - Web Deploy\mssql1.arm.json
 C:\Users\michael\Source\Repos\michaelnikhil\TirelireShop\TirelireShop\bin\Release\netcoreapp3.1\Properties\ServiceDependencies\webapptpmichael - Web Deploy\mssql2.arm.json
+C:\Users\michael\Source\Repos\michaelnikhil\TirelireShop\TirelireShop\bin\Release\netcoreapp3.1\Properties\serviceDependencies.TirelireShopMichael - Web Deploy.json
+C:\Users\michael\Source\Repos\michaelnikhil\TirelireShop\TirelireShop\bin\Release\netcoreapp3.1\Properties\ServiceDependencies\TirelireShopMichael - Web Deploy\mssql1.arm.json
+C:\Users\michael\Source\Repos\michaelnikhil\TirelireShop\TirelireShop\bin\Release\netcoreapp3.1\Properties\ServiceDependencies\TirelireShopMichael - Web Deploy\mssql2.arm.json
+C:\Users\michael\Source\Repos\michaelnikhil\TirelireShop\TirelireShop\bin\Release\netcoreapp3.1\Properties\ServiceDependencies\TirelireShopMichael - Web Deploy\profile.arm.json
